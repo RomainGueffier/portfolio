@@ -1,0 +1,31 @@
+{
+  "name": "@romain-g/astrojs",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint ./src",
+    "format": "prettier ./src"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "astro": "^1.0.6",
+    "eslint": "^8.22.0",
+    "eslint-plugin-astro": "^0.17.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "@tabler/icons": "^1.86.0"
+  }
+}

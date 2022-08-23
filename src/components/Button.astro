@@ -1,0 +1,14 @@
+---
+export interface Props {
+  ariaLabel?: string
+}
+
+const { ariaLabel } = Astro.props as Props
+---
+
+<button
+  class="w-fit h-fit p-1 rounded-full hover:scale-110 transition-all ease-in-out duration-200"
+  aria-label={ariaLabel}
+>
+  <slot />
+</button>

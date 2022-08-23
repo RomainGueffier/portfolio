@@ -1,0 +1,123 @@
+---
+import {
+  Icon3dCubeSphere,
+  IconBrandGitlab,
+  IconCode,
+  IconGitPullRequest,
+  IconPrompt,
+} from '@tabler/icons'
+---
+
+<div class="p-10 flex gap-5 items-center justify-around flex-col md:flex-row">
+  <div class="md:text-left md:w-1/2">
+    <small>
+      Welcome to my <span class="text-red-500">Portfolio</span> website
+    </small>
+    <h1 class="typewriter">
+      I'm <span class="job"></span><span class="cursor">|</span>
+    </h1>
+    <p class="font-light text-slate-600 dark:text-slate-400 py-2">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi natus
+      assumenda commodi harum veniam labore eius excepturi ullam totam sequi?
+    </p>
+  </div>
+  <div>
+    <Icon3dCubeSphere
+      id="icon-cube"
+      width="256"
+      height="256"
+      style={{ display: 'none' }}
+    />
+    <IconGitPullRequest
+      id="icon-git"
+      width="256"
+      height="256"
+      style={{ display: 'none' }}
+    />
+    <IconPrompt
+      id="icon-prompt"
+      width="256"
+      height="256"
+      style={{ display: 'none' }}
+    />
+    <IconBrandGitlab
+      id="icon-devops"
+      width="256"
+      height="256"
+      style={{ display: 'none' }}
+    />
+    <IconCode
+      id="icon-code"
+      width="256"
+      height="256"
+      style={{ display: 'none' }}
+    />
+  </div>
+</div>
+<script is:inline>
+  function getRandomJob() {
+    const jobs = [
+      { label: 'a Full-Stack Developer', icon: 'prompt' },
+      { label: 'a Web Developer', icon: 'code' },
+      { label: 'an Application Architect', icon: 'cube' },
+      { label: 'a Devops expert', icon: 'devops' },
+      { label: 'a Programming Teacher', icon: 'git' },
+    ]
+    const randomIndex = Math.floor(Math.random() * jobs.length)
+    return jobs.at(randomIndex)
+  }
+
+  function typeAnimationWriting(element, text = '', timeout, startOffset = 0) {
+    if (!text) {
+      const { icon, label } = getRandomJob()
+      text = label
+      document
+        .querySelectorAll(`[id^="icon-"]`)
+        .forEach((el) => (el.style.display = 'none'))
+      document.querySelector(`#icon-${icon}`).style.display = 'block'
+    }
+    const firstLetter = text.charAt(0)
+    setTimeout(() => {
+      element.innerHTML += firstLetter
+      text = text.slice(1)
+      if (text.length > 0) typeAnimationWriting(element, text, timeout)
+      else typeAnimationErase(element, timeout, 5000)
+    }, timeout + startOffset)
+  }
+
+  function typeAnimationErase(element, timeout, startOffset = 0) {
+    setTimeout(() => {
+      element.innerHTML = element.innerHTML.slice(0, -1)
+      if (element.innerHTML) typeAnimationErase(element, timeout)
+      else typeAnimationWriting(element, '', timeout)
+    }, 25 + startOffset)
+  }
+
+  const typewriterEl = document.querySelector('.typewriter > span')
+  if (typewriterEl) {
+    typeAnimationWriting(typewriterEl, '', 100, 1000)
+  }
+</script>
+<style>
+  .typewriter {
+    @apply font-light text-3xl md:text-4xl lg:text-5xl py-2 font-mono tracking-wide leading-normal;
+  }
+  .typewriter .job {
+    @apply text-orange-500 font-semibold whitespace-pre-line;
+  }
+  .typewriter .cursor {
+    @apply text-orange-500;
+    animation: blink-animation 0.75s steps(5, start) infinite;
+  }
+
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+</style>

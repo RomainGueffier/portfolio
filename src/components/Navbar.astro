@@ -1,0 +1,33 @@
+---
+import {
+  IconChecklist,
+  IconCode,
+  IconHome,
+  IconInfoSquare,
+  IconMoon,
+} from '@tabler/icons'
+import Button from './Button.astro'
+---
+
+<nav class="w-full flex items-center gap-5 flex-col md:flex-row">
+  <div class="flex-1 flex items-center">
+    <img src="/logo.webp" alt="logo" class="w-10 h-10 rounded" />
+  </div>
+  <ul class="menu">
+    <li><a href="/"><IconHome /> Home</a></li>
+    <li><a href="/about"><IconInfoSquare /> About</a></li>
+    <li><a href="/projects"><IconChecklist /> Projects</a></li>
+  </ul>
+  <div class="flex-1 justify-end text-right">
+    <Button ariaLabel="Toggle color mode"><IconMoon /></Button>
+  </div>
+</nav>
+<style>
+  .menu {
+    @apply flex-1 flex gap-5 justify-center items-center;
+  }
+
+  .menu > li > a {
+    @apply flex gap-1 items-center;
+  }
+</style>
