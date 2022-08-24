@@ -2,66 +2,98 @@
 import {
   Icon3dCubeSphere,
   IconBrandGitlab,
+  IconBrowserPlus,
   IconCode,
   IconGitPullRequest,
   IconPrompt,
+  IconSeo,
 } from '@tabler/icons'
+import Button from './Button.astro'
 ---
 
-<div class="p-10 flex gap-5 items-center justify-around flex-col md:flex-row">
-  <div class="md:text-left md:w-1/2">
-    <small>
-      Welcome to my <span class="text-red-500">Portfolio</span> website
+<section
+  class="p-5 md:p-40 flex gap-5 items-center justify-around flex-col md:flex-row"
+>
+  <div class="md:text-left md:w-2/3">
+    <small class="text-lg text-slate-500">
+      Welcome to my <span class="text-orange-500">Portfolio</span> website
     </small>
     <h1 class="typewriter">
       I'm <span class="job"></span><span class="cursor">|</span>
     </h1>
-    <p class="font-light text-slate-600 dark:text-slate-400 py-2">
+    <p
+      class="text-xl md:text-2xl font-light text-slate-600 dark:text-slate-400 py-2"
+    >
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi natus
       assumenda commodi harum veniam labore eius excepturi ullam totam sequi?
     </p>
+    <div class="py-4 flex gap-4 items-center">
+      <Button variant="rounded">Download resume</Button>
+      <Button variant="rounded" colorScheme="dark">Contact me</Button>
+    </div>
   </div>
   <div>
     <Icon3dCubeSphere
       id="icon-cube"
       width="256"
       height="256"
+      stroke={1}
       style={{ display: 'none' }}
     />
     <IconGitPullRequest
       id="icon-git"
       width="256"
       height="256"
+      stroke={1}
       style={{ display: 'none' }}
     />
     <IconPrompt
       id="icon-prompt"
       width="256"
       height="256"
+      stroke={1}
       style={{ display: 'none' }}
     />
     <IconBrandGitlab
       id="icon-devops"
       width="256"
       height="256"
+      stroke={1}
       style={{ display: 'none' }}
     />
     <IconCode
       id="icon-code"
       width="256"
       height="256"
+      stroke={1}
+      style={{ display: 'none' }}
+    />
+    <IconBrowserPlus
+      id="icon-browser"
+      width="256"
+      height="256"
+      stroke={1}
+      style={{ display: 'none' }}
+    />
+    <IconSeo
+      id="icon-seo"
+      width="256"
+      height="256"
+      stroke={1}
       style={{ display: 'none' }}
     />
   </div>
-</div>
+</section>
 <script is:inline>
   function getRandomJob() {
     const jobs = [
       { label: 'a Full-Stack Developer', icon: 'prompt' },
       { label: 'a Web Developer', icon: 'code' },
       { label: 'an Application Architect', icon: 'cube' },
-      { label: 'a Devops expert', icon: 'devops' },
+      { label: 'a Devops Geek', icon: 'devops' },
       { label: 'a Programming Teacher', icon: 'git' },
+      { label: 'a Webmaster', icon: 'browser' },
+      { label: 'a SEO consultant', icon: 'seo' },
     ]
     const randomIndex = Math.floor(Math.random() * jobs.length)
     return jobs.at(randomIndex)

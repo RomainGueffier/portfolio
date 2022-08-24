@@ -1,0 +1,77 @@
+---
+import { IconCaretRight } from '@tabler/icons'
+---
+
+<section class="py-20">
+  <div class="container mx-auto text-center">
+    <h2 class="text-2xl md:text-4xl mb-10 font-semibold">
+      Here are some of my projects
+    </h2>
+    <div
+      id="image-carousel"
+      class="splide mx-auto my-20 md:shadow-lg md:rounded"
+      aria-label="Projects image slider"
+    >
+      <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev">
+          <IconCaretRight />
+        </button>
+        <button class="splide__arrow splide__arrow--next">
+          <IconCaretRight />
+        </button>
+      </div>
+
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <img
+              src="/projects/univirtual.webp"
+              alt="univirtual branding website"
+              loading="lazy"
+            />
+          </li>
+          <li class="splide__slide">
+            <img
+              src="/projects/iws-logiciel.webp"
+              alt="iws logiciel branding website"
+              loading="lazy"
+            />
+          </li>
+          <li class="splide__slide">
+            <img
+              src="/projects/decalog.webp"
+              alt="decalog branding website"
+              loading="lazy"
+            />
+          </li>
+          <li class="splide__slide">
+            <img
+              src="/projects/lavandesetcompagnie.webp"
+              alt="lavandesandcie branding website"
+              loading="lazy"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-xl text-slate-700 font-semibold text-center">
+      I'm looking forward to study your needs and ideas as my next project...
+    </p>
+  </div>
+</section>
+
+<script>
+  import '@splidejs/splide/css'
+  import Splide from '@splidejs/splide'
+
+  new Splide('#image-carousel', {
+    width: 800,
+    heightRatio: 0.6,
+  }).mount()
+</script>
+
+<style>
+  .splide__slide img {
+    @apply w-full h-full object-cover md:rounded opacity-90;
+  }
+</style>

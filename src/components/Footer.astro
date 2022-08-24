@@ -1,0 +1,10 @@
+---
+import { IconCopyright } from '@tabler/icons'
+const now = new Date()
+---
+
+<footer class="bg-slate-900 text-slate-400 h-10 p-2 text-center">
+  Copyright <IconCopyright className="inline-block" /> Romain Gueffier - {
+    now.getFullYear()
+  }
+</footer>

@@ -9,7 +9,7 @@ const { title } = Astro.props as Props
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -17,8 +17,8 @@ const { title } = Astro.props as Props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="text-lg dark:bg-slate-800 dark:text-slate-100 overflow-x-hidden">
-    <main class="p-5 text-center container m-auto">
+  <body class="overflow-x-hidden">
+    <main class="bg-slate-50 dark:bg-slate-700 dark:text-slate-100">
       <Navbar />
       <slot />
     </main>

@@ -95,6 +95,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/node@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@astrojs/node@npm:1.0.0"
+  dependencies:
+    "@astrojs/webapi": ^1.0.0
+  checksum: f2873c7742bef2b7dafb3ab57100de4e663ec8a90ea34078245800cc02936e045a8e24acfe35a34aed3f14089e80f91637dd9e482fea8be660d574987aff4792
+  languageName: node
+  linkType: hard
+
 "@astrojs/prism@npm:^1.0.0":
   version: 1.0.1
   resolution: "@astrojs/prism@npm:1.0.1"
@@ -726,8 +735,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@romain-g/astrojs@workspace:."
   dependencies:
+    "@astrojs/node": ^1.0.0
     "@astrojs/react": ^1.0.0
     "@astrojs/tailwind": ^1.0.0
+    "@splidejs/react-splide": ^0.7.8
+    "@splidejs/splide": ^4.0.7
     "@tabler/icons": ^1.86.0
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": latest
@@ -740,6 +752,22 @@ __metadata:
     react-dom: ^18.0.0
   languageName: unknown
   linkType: soft
+
+"@splidejs/react-splide@npm:^0.7.8":
+  version: 0.7.8
+  resolution: "@splidejs/react-splide@npm:0.7.8"
+  dependencies:
+    "@splidejs/splide": ^4.0.7
+  checksum: 73cbcb242713e3cf3cd11c263e7d697137bd77fb4f6f8cd06cf8b23e56dfe4ff3fd7f57e1bb4bc8c0b8e7f7653fc1e3e3fcd3d48eba3013d813740a55f9364ce
+  languageName: node
+  linkType: hard
+
+"@splidejs/splide@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "@splidejs/splide@npm:4.0.7"
+  checksum: 0e95bbb59d4d55302851c652adfe07c661addd2ba4e1b495e037df37db52aa3dcb269cea36eb5d6446c4dbb781c6228ef32884c0f476d9d21ccead2dc197f36c
+  languageName: node
+  linkType: hard
 
 "@tabler/icons@npm:^1.86.0":
   version: 1.86.0
