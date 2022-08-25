@@ -5,18 +5,35 @@ import Input from './Input.astro'
 import Textarea from './Textarea.astro'
 ---
 
-<section id="contact" class="py-20 bg-slate-50 dark:bg-slate-800">
+<section id="contact" class="py-20 bg-slate-100 dark:bg-slate-800">
   <div class="w-1/3 mx-auto text-center">
     <h2 class="text-4xl">Contact</h2>
-    <form
-      id="contact-form"
-      class="py-10 flex gap-5 flex-col items-center"
-      novalidate
-    >
-      <Input type="text" placeholder="Fullname" name="fullname" />
-      <Input type="email" placeholder="Email" name="email" />
-      <Input type="phone" placeholder="Telephone" name="phone" />
-      <Textarea placeholder="Message" name="message" />
+    <form id="contact-form" class="py-10 flex gap-5 flex-col items-center">
+      <Input
+        type="text"
+        placeholder="Fullname"
+        name="fullname"
+        required
+        pattern="[a-zA-Z\\s]+"
+        title="Please fill your name with only letters and spaces"
+      />
+      <Input
+        type="email"
+        placeholder="Email"
+        name="email"
+        required
+        pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+        title="Please enter a valid email address"
+      />
+      <Input
+        type="phone"
+        placeholder="Telephone"
+        name="phone"
+        required
+        pattern="[0-9\\s]{10,20}"
+        title="Please enter a valid phone number"
+      />
+      <Textarea placeholder="Message" name="message" required />
       <Button
         variant="rounded"
         colorScheme="primary"

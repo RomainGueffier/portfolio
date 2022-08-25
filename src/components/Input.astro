@@ -15,13 +15,16 @@ export interface Props {
   id?: string
   placeholder?: string
   value?: string
+  required?: boolean
+  pattern?: string
+  title?: string
 }
 
 type Icons = {
   [k in InputType]: TablerIcon
 }
 
-const attributes = Astro.props as Props
+const { required = false, ...attributes } = Astro.props as Props
 const icons: Icons = {
   text: IconAlphabetLatin,
   number: IconNumber,
@@ -40,6 +43,7 @@ const Icon = icons[attributes.type]
   </span>
   <input
     class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-1 sm:text-sm dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-300"
+    required={required}
     {...attributes}
   />
 </label>
