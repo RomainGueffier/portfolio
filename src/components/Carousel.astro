@@ -1,15 +1,16 @@
 ---
 import { IconCaretRight } from '@tabler/icons'
+import Anchor from './Anchor.astro'
 ---
 
-<section class="py-20">
+<section id="carousel-section" class="py-20">
   <div class="container mx-auto text-center">
     <h2 class="text-2xl md:text-4xl mb-10 font-semibold">
       Here are some of my projects
     </h2>
     <div
       id="image-carousel"
-      class="splide mx-auto my-20 md:shadow-lg md:rounded"
+      class="splide mx-auto my-20 md:shadow-lg md:rounded animate-fadein"
       aria-label="Projects image slider"
     >
       <div class="splide__arrows">
@@ -54,20 +55,44 @@ import { IconCaretRight } from '@tabler/icons'
         </ul>
       </div>
     </div>
-    <p class="text-xl text-slate-700 font-semibold text-center">
-      I'm looking forward to study your needs and ideas as my next project...
-    </p>
+    <div
+      id="contact-me-for-next-project"
+      class="translate-x-full duration-1000 ease-out"
+    >
+      <p class="text-xl text-slate-700 font-semibold text-center">
+        I'm looking forward to study your needs and ideas as my next project...
+      </p>
+      <Anchor
+        variant="rounded"
+        colorScheme="primary"
+        href="#contact"
+        override="my-5"
+      >
+        Contact me
+      </Anchor>
+    </div>
   </div>
 </section>
 
 <script>
   import '@splidejs/splide/css'
   import Splide from '@splidejs/splide'
+  import { useObserver } from '../hooks/useObserver'
 
   new Splide('#image-carousel', {
     width: 800,
     heightRatio: 0.6,
   }).mount()
+
+  useObserver<HTMLAnchorElement>('#carousel-section', () => {
+    const nextProjectDivEl = document.querySelector<HTMLDivElement>(
+      '#contact-me-for-next-project'
+    )
+    if (!nextProjectDivEl) return
+
+    nextProjectDivEl.classList.remove('translate-x-full', 'opacity-0')
+    nextProjectDivEl.classList.add('animate-fadein')
+  })
 </script>
 
 <style>
