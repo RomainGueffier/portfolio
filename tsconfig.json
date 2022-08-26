@@ -17,8 +17,8 @@
     "importsNotUsedAsValues": "error",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@/components/*": ["src/components/*"],
+      "@/layouts/*": ["src/layouts/*"]
     }
   }
 }

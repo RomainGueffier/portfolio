@@ -1,0 +1,49 @@
+---
+import { IconInfoSquare } from '@tabler/icons'
+import Anchor from '../Anchor.astro'
+---
+
+<section
+  id="about"
+  class="bg-slate-500 py-36 flex gap-32 items-center justify-center"
+>
+  <div class="w-[500pt] text-lg tracking-wide">
+    <h2
+      class="text-4xl mt-0 mb-10 font-semibold text-white flex gap-2 items-center"
+    >
+      <IconInfoSquare width={64} height={64} stroke={1} /> About me
+    </h2>
+    <p class="text-slate-200 leading-relaxed">
+      Hello! My name is Romain and I enjoy building awesome websites that will
+      shine on the internet. I started programming back in 2011 after high
+      school with C++ and PHP. My first job after my Bachelor Degree was in a
+      software company creating CMS and websites for libraries. I ended up
+      liking web development for it's creativity, variety and impact on
+      customers.
+      <br /><br />
+      Fast forward a bit in 2021 during pandemic, I've used my job loss as a occasion
+      to get better. I focused on personal projects to improve my skills and abilities
+      to suggest the correct tool for a given need. I ended up specializing in NodeJS
+      and React. Today I help a middle size company grow up by creating powerfull
+      web apps and websites. I push my team forward with my warm support, positive
+      atitude and awesome devops methodology!
+    </p>
+    <span class="block text-slate-100 mt-10">
+      Do you want to be my <span
+        class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:z-0 before:bg-orange-400 relative inline-block"
+        ><span class="relative">next customer?</span>
+      </span> Feel free to <Anchor
+        href="#contact"
+        variant="rounded"
+        colorScheme="dark">contact me</Anchor
+      >!
+    </span>
+  </div>
+  <div class="w-[300px] border-2 border-slate-100 rounded">
+    <img
+      class="w-full aspect-square shadow hover:rounded hover:-translate-y-4 hover:-translate-x-4 hover:scale-105 duration-150 ease-in-out brightness-90"
+      src="/me.webp"
+      alt="about me"
+    />
+  </div>
+</section>
