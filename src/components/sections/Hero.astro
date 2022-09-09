@@ -9,6 +9,7 @@ import {
   IconSeo,
 } from '@tabler/icons'
 import Button from '@/components/Button.astro'
+import Anchor from '../Anchor.astro'
 ---
 
 <section
@@ -27,8 +28,16 @@ import Button from '@/components/Button.astro'
       SEO and devops tools to improve companies results!
     </p>
     <div class="py-4 flex gap-4 items-center">
-      <Button variant="rounded">Download resume</Button>
-      <Button variant="rounded" colorScheme="dark">Contact me</Button>
+      <Anchor
+        href="/downloads/romain-gueffier-cv.pdf"
+        target="_blank"
+        variant="rounded"
+      >
+        Download resume
+      </Anchor>
+      <Anchor href="#contact" variant="rounded" colorScheme="dark">
+        Contact me
+      </Anchor>
     </div>
   </div>
   <div>

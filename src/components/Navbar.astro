@@ -1,6 +1,13 @@
 ---
-import { IconHome, IconInfoSquare, IconMail, IconMoon } from '@tabler/icons'
+import {
+  IconHome,
+  IconInfoSquare,
+  IconMail,
+  IconMoon,
+  IconSun,
+} from '@tabler/icons'
 import Button from './Button.astro'
+import ThemeToggle from './navbar/ThemeToggle.astro'
 ---
 
 <nav
@@ -15,7 +22,7 @@ import Button from './Button.astro'
     <li><a href="#contact"><IconMail /> Contact</a></li>
   </ul>
   <div class="flex-1 justify-end text-right">
-    <Button ariaLabel="Toggle color mode"><IconMoon /></Button>
+    <ThemeToggle />
   </div>
 </nav>
 <style>

@@ -1,0 +1,35 @@
+---
+import { IconClock, IconMoon, IconSun } from '@tabler/icons'
+import Button from '../Button.astro'
+
+import './styles.css'
+---
+
+<Button data-theme="auto" id="dark-mode-btn" ariaLabel="Toggle color mode">
+  <div class="auto"><IconClock /></div>
+  <div class="light"><IconMoon /></div>
+  <div class="dark"><IconSun /></div>
+</Button>
+<script is:inline>
+  const darkModeBtn = document.querySelector('#dark-mode-btn')
+  if (darkModeBtn) {
+    darkModeBtn.addEventListener('click', () => {
+      console.log(darkModeBtn.dataset.theme)
+      switch (darkModeBtn.dataset.theme) {
+        case 'dark':
+          localStorage.theme = 'light'
+          break
+        case 'light':
+          localStorage.removeItem('theme')
+          break
+        default:
+          localStorage.theme = 'dark'
+          break
+      }
+      darkModeBtn.dataset.theme = localStorage?.theme || 'auto'
+      localStorage?.theme === 'dark'
+        ? document.documentElement.classList.add('dark')
+        : document.documentElement.classList.remove('dark')
+    })
+  }
+</script>

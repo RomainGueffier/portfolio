@@ -1,0 +1,8 @@
+[data-theme="auto"] > .light,
+[data-theme="auto"] > .dark,
+[data-theme="light"] > .auto,
+[data-theme="light"] > .dark,
+[data-theme="dark"] > .auto,
+[data-theme="dark"] > .light {
+  @apply hidden;
+}
