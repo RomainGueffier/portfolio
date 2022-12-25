@@ -1,10 +1,14 @@
 ---
 import { IconCopyright } from '@tabler/icons'
+import FollowMe from './social/FollowMe.astro'
 const now = new Date()
 ---
 
-<footer class="bg-slate-900 text-slate-400 h-10 p-2 text-center">
-  Copyright <IconCopyright className="inline-block" /> Romain Gueffier - {
-    now.getFullYear()
-  }
+<footer class="bg-slate-900 text-slate-400">
+  <FollowMe />
+  <section class="h-10 p-2 text-center">
+    Copyright <IconCopyright className="inline-block" /> Romain Gueffier - {
+      now.getFullYear()
+    }
+  </section>
 </footer>

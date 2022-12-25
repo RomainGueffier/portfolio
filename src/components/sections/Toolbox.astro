@@ -1,0 +1,234 @@
+---
+import { IconBlockquote, IconQuote, IconTools } from '@tabler/icons'
+
+const toolbox = [
+  {
+    name: 'Git',
+    icon: 'https://cdn.simpleicons.org/git/F05032',
+    size: 128,
+  },
+  {
+    name: 'Node.js',
+    icon: 'https://cdn.simpleicons.org/node.js/339933',
+    size: 64,
+  },
+  {
+    name: 'React',
+    icon: 'https://cdn.simpleicons.org/react/61DAFB',
+    size: 128,
+  },
+  {
+    name: 'Astro',
+    icon: 'https://cdn.simpleicons.org/astro/FF5D01',
+    size: 32,
+  },
+  {
+    name: 'Docker',
+    icon: 'https://cdn.simpleicons.org/docker/2496ED',
+    size: 128,
+  },
+  {
+    name: 'Visual Studio Code',
+    icon: 'https://cdn.simpleicons.org/visualstudiocode/007ACC',
+    size: 128,
+  },
+  {
+    name: 'Pnpm',
+    icon: 'https://cdn.simpleicons.org/pnpm/F69220',
+    size: 64,
+  },
+  {
+    name: 'Javascript',
+    icon: 'https://cdn.simpleicons.org/javascript/F7DF1E',
+    size: 64,
+  },
+  {
+    name: 'Typescript',
+    icon: 'https://cdn.simpleicons.org/typescript/3178C6',
+    size: 128,
+  },
+  {
+    name: 'TailwindCSS',
+    icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
+    size: 128,
+  },
+  {
+    name: 'Next.js',
+    icon: 'https://cdn.simpleicons.org/next.js/000000',
+    size: 128,
+  },
+  {
+    name: 'Rust',
+    icon: 'https://cdn.simpleicons.org/rust/000000',
+    size: 32,
+  },
+  {
+    name: 'Gitlab',
+    icon: 'https://cdn.simpleicons.org/gitlab/FC6D26',
+    size: 64,
+  },
+  {
+    name: 'GitHub',
+    icon: 'https://cdn.simpleicons.org/github/181717',
+    size: 64,
+  },
+  {
+    name: 'HTML5',
+    icon: 'https://cdn.simpleicons.org/html5/E34F26',
+    size: 32,
+  },
+  {
+    name: 'CSS3',
+    icon: 'https://cdn.simpleicons.org/css3/1572B6',
+    size: 32,
+  },
+  {
+    name: 'Express',
+    icon: 'https://cdn.simpleicons.org/express/000000',
+    size: 64,
+  },
+  {
+    name: 'Strapi',
+    icon: 'https://cdn.simpleicons.org/strapi/2F2E8B',
+    size: 32,
+  },
+  {
+    name: 'Markdown',
+    icon: 'https://cdn.simpleicons.org/markdown/000000',
+    size: 32,
+  },
+  {
+    name: 'PHP',
+    icon: 'https://cdn.simpleicons.org/php/777BB4',
+    size: 64,
+  },
+  {
+    name: 'Symfony',
+    icon: 'https://cdn.simpleicons.org/symfony/000000',
+    size: 32,
+  },
+  {
+    name: 'MariaDB',
+    icon: 'https://cdn.simpleicons.org/mariadb/003545',
+    size: 64,
+  },
+  {
+    name: 'Storybook',
+    icon: 'https://cdn.simpleicons.org/storybook/FF4785',
+    size: 64,
+  },
+  {
+    name: 'Prisma',
+    icon: 'https://cdn.simpleicons.org/prisma/2D3748',
+    size: 64,
+  },
+  {
+    name: 'Prettier',
+    icon: 'https://cdn.simpleicons.org/prettier/F7B93E',
+    size: 32,
+  },
+  {
+    name: 'ESLint',
+    icon: 'https://cdn.simpleicons.org/eslint/4B32C3',
+    size: 32,
+  },
+  {
+    name: 'Jest',
+    icon: 'https://cdn.simpleicons.org/jest/C21325',
+    size: 32,
+  },
+  {
+    name: 'Vite',
+    icon: 'https://cdn.simpleicons.org/vite/646CFF',
+    size: 64,
+  },
+  {
+    name: 'TurboRepo',
+    icon: 'https://cdn.simpleicons.org/turborepo/EF4444',
+    size: 32,
+  },
+  {
+    name: 'Composer',
+    icon: 'https://cdn.simpleicons.org/composer/885630',
+    size: 32,
+  },
+  {
+    name: 'Grafana',
+    icon: 'https://cdn.simpleicons.org/grafana/F46800',
+    size: 32,
+  },
+  {
+    name: 'Apache',
+    icon: 'https://cdn.simpleicons.org/apache/D22128',
+    size: 32,
+  },
+  {
+    name: 'Nginx',
+    icon: 'https://cdn.simpleicons.org/nginx/009639',
+    size: 64,
+  },
+  {
+    name: 'Redis',
+    icon: 'https://cdn.simpleicons.org/redis/DC382D',
+    size: 32,
+  },
+  {
+    name: 'Bash',
+    icon: 'https://cdn.simpleicons.org/gnubash/4EAA25',
+    size: 64,
+  },
+  {
+    name: 'Debian',
+    icon: 'https://cdn.simpleicons.org/debian/A81D33',
+    size: 32,
+  },
+]
+---
+
+<section id="toolbox" class="bg-slate-100 dark:bg-slate-900 py-36 px-20">
+  <h2
+    class="text-4xl mt-0 mb-10 font-semibold text-slate-900 dark:text-slate-50 flex gap-2 items-center justify-end"
+  >
+    My Toolbox <IconTools width={64} height={64} stroke={1} />
+  </h2>
+  <figure
+    class="max-w-[300pt] text-right ml-auto bg-slate-200 dark:bg-slate-800 p-4 shadow rounded hover:shadow-lg transition ease-in-out delay-200"
+  >
+    <blockquote
+      cite="https://www.jw.org/en/library/bible/study-bible/books/ecclesiastes/10/#v21010010"
+    >
+      <p class="text-slate-600 leading-relaxed">
+        <IconBlockquote
+          className="float-left mb-1 mr-1"
+          width={48}
+          height={48}
+          stroke={1}
+        />
+        If an iron tool is dull and one does not sharpen its edge, he will need to
+        exert much effort. But wisdom helps to achieve success.
+      </p>
+    </blockquote>
+    <figcaption class="text-sm mt-2 text-slate-500">
+      — Ecclesiastes 10:10, <cite>New World Translation</cite>
+    </figcaption>
+  </figure>
+  <article
+    class="mx-auto p-10 my-10 dark:bg-slate-800 rounded flex flex-wrap gap-4"
+  >
+    {
+      toolbox.map((tool) => {
+        return (
+          <img
+            src={tool.icon}
+            alt={tool.name}
+            loading="lazy"
+            width={tool.size}
+            height={tool.size}
+            title={tool.name}
+            class="hover:animate-pulse hover:scale-125 cursor-pointer transition ease-in delay-200"
+          />
+        )
+      })
+    }
+  </article>
+</section>

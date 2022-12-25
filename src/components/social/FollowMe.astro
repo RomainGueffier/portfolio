@@ -1,0 +1,46 @@
+---
+const socialApps = [
+  {
+    name: 'Github',
+    href: 'https://github.com/RomainGueffier',
+    logo: 'https://cdn.simpleicons.org/github/181717',
+  },
+  {
+    name: 'StackOverflow',
+    href: 'https://stackoverflow.com/users/19425198/rgr',
+    logo: 'https://cdn.simpleicons.org/stackoverflow/F58025',
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/romain-gueffier/',
+    logo: 'https://cdn.simpleicons.org/linkedin/0A66C2',
+  },
+]
+---
+
+<section class="w-full p-10 bg-slate-700 text-center">
+  <h2 class="p-4 text-xl font-semibold">Follow me!</h2>
+  <ul class="mx-auto flex items-center justify-center flex-wrap gap-2">
+    {
+      socialApps.map((app) => {
+        return (
+          <li class="p-2">
+            <a
+              href={app.href}
+              class="flex flex-col gap-2 items-center justify-center hover:scale-110 transition delay-200 ease-in"
+              target="_blank"
+            >
+              <img
+                src={app.logo}
+                alt={app.name + ' logo'}
+                width="32"
+                height="32"
+              />
+              {app.name}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+</section>
