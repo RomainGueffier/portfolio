@@ -1,0 +1,16 @@
+{
+  "prettier.semi": false,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "es5",
+  "prettier.singleQuote": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "astro": "html"
+  }
+}

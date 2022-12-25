@@ -1,5 +1,7 @@
 {
   "name": "@romain-g/astrojs",
+  "description": "Portfolio website for RomainGueffier company using Astro.js",
+  "author": "RomainGueffier <r.gueffier.pro@gmail.com>",
   "version": "1.0.0",
   "type": "module",
   "private": true,
