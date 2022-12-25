@@ -1,44 +1,48 @@
-# Welcome to [Astro](https://astro.build)
+# Welcome to my Portfolio
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+![Astro](https://img.shields.io/badge/astro-FF5D01?style=for-the-badge&logo=astro&logoColor=F7BA3E)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Table of Contents
 
-## 🚀 Project Structure
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
 
-Inside of your Astro project, you'll see the following folders and files:
+## About <a name = "about"></a>
+
+Welcome to my personal portfolio built with Astro.js
+
+## Getting Started <a name = "getting_started"></a>
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+You need NodeJs to be installed in your machine (16+ recommended)
 
 ```
-/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+nvm use 18
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Installing
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
+A step by step series of examples that tell you how to get a development env running.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Open projet in your IDE / terminal and run dev server with:
 
-## 🧞 Commands
+```
+pnpm dev
+```
 
-All commands are run from the root of the project, from a terminal:
+Production version can be built and run with:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+```
+pnpm build
+pnpm preview
+```
 
-## 👀 Want to learn more?
+## Usage <a name = "usage"></a>
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+You may need to install the recommended extensions in VSCode to have intellisense enabled.
