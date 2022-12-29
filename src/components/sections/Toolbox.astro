@@ -1,5 +1,5 @@
 ---
-import { IconBlockquote, IconQuote, IconTools } from '@tabler/icons'
+import { IconBlockquote, IconTools } from '@tabler/icons'
 
 const toolbox = [
   {
@@ -70,7 +70,7 @@ const toolbox = [
   {
     name: 'GitHub',
     icon: 'https://cdn.simpleicons.org/github/181717',
-    size: 64,
+    size: 32,
   },
   {
     name: 'HTML5',
@@ -182,6 +182,46 @@ const toolbox = [
     icon: 'https://cdn.simpleicons.org/debian/A81D33',
     size: 32,
   },
+  {
+    name: 'Swagger',
+    icon: 'https://cdn.simpleicons.org/swagger/85EA2D',
+    size: 32,
+  },
+  {
+    name: 'Obsidian',
+    icon: 'https://cdn.simpleicons.org/obsidian/483699',
+    size: 32,
+  },
+  {
+    name: 'ChakraUI',
+    icon: 'https://cdn.simpleicons.org/chakraui/319795',
+    size: 32,
+  },
+  {
+    name: 'StyledComponent',
+    icon: 'https://cdn.simpleicons.org/styledcomponents/DB7093',
+    size: 32,
+  },
+  {
+    name: 'ReactQuery',
+    icon: 'https://cdn.simpleicons.org/reactquery/FF4154',
+    size: 32,
+  },
+  {
+    name: 'ReactHookForm',
+    icon: 'https://cdn.simpleicons.org/reacthookform/EC5990',
+    size: 32,
+  },
+  {
+    name: 'GraphQL',
+    icon: 'https://cdn.simpleicons.org/graphql/E10098',
+    size: 32,
+  },
+  {
+    name: 'HeadlessUI',
+    icon: 'https://cdn.simpleicons.org/headlessui/66E3FF',
+    size: 32,
+  },
 ]
 ---
 
@@ -216,22 +256,51 @@ const toolbox = [
     </figcaption>
   </figure>
   <article
-    class="mx-auto p-5 md:p-10 my-10 dark:bg-slate-800 rounded flex flex-wrap justify-center gap-4"
+    class="mx-auto p-5 md:p-10 my-10 dark:bg-slate-800 rounded toolbox-grid max-w-[500pt]"
   >
     {
       toolbox.map((tool) => {
+        const className = tool.name.replaceAll(/ |\./g, '-').toLowerCase()
         return (
           <img
             src={tool.icon}
             alt={tool.name}
             loading="lazy"
-            width={tool.size}
-            height={tool.size}
+            width={128}
+            height={128}
             title={tool.name}
-            class="hover:animate-pulse hover:scale-125 cursor-pointer transition ease-in delay-200"
+            class={
+              'hover:animate-pulse hover:scale-125 cursor-pointer transition ease-in-out w-full h-full ' +
+              className
+            }
+            style={{
+              gridArea: className,
+            }}
           />
         )
       })
     }
   </article>
 </section>
+
+<style>
+  .toolbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    grid-template-areas:
+      'astro javascript javascript pnpm mariadb php php gitlab gitlab strapi'
+      'turborepo javascript javascript css3 html5 php php gitlab gitlab prettier'
+      'express express markdown typescript typescript typescript rust node-js node-js apache'
+      'express express eslint typescript typescript typescript jest node-js node-js debian'
+      'symfony tailwindcss tailwindcss typescript typescript typescript bash bash git git'
+      'composer tailwindcss tailwindcss storybook storybook redis bash bash git git'
+      'visual-studio-code visual-studio-code visual-studio-code storybook storybook react react react swagger vite'
+      'visual-studio-code visual-studio-code visual-studio-code nginx nginx react react react github github'
+      'visual-studio-code visual-studio-code visual-studio-code nginx nginx react react react github github'
+      'prisma prisma next-js next-js next-js graphql docker docker docker styledcomponent'
+      'prisma prisma next-js next-js next-js headlessui docker docker docker reactquery'
+      'chakraui obsidian next-js next-js next-js grafana docker docker docker reacthookform';
+  }
+</style>
