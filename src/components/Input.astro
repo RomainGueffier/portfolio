@@ -1,12 +1,8 @@
 ---
-import {
-  IconAlphabetLatin,
-  IconAt,
-  IconCalendar,
-  IconNumber,
-  IconPhone,
-  TablerIcon,
-} from '@tabler/icons'
+import iconsPck from '@tabler/icons'
+import type { TablerIcon } from '@tabler/icons'
+const { IconAlphabetLatin, IconAt, IconCalendar, IconNumber, IconPhone } =
+  iconsPck
 
 type InputType = 'text' | 'number' | 'date' | 'email'
 export interface Props {
