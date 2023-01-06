@@ -3,21 +3,14 @@ import { IconCaretRight } from '@tabler/icons'
 import Anchor from './Anchor.astro'
 ---
 
-<section id="carousel-section" class="py-20">
+<section id="carousel-section" class="py-20 bg-slate-50 dark:bg-slate-600">
   <div class="container mx-auto text-center">
     <h2 class="text-2xl md:text-4xl mb-10 font-semibold">
-      Here are some websites I played with 🕹️
+      Companies collaborations
     </h2>
-    <img
-      src="https://camo.githubusercontent.com/40165a147c3dcea0fa1db780bb533fc5f98546ccfb9d5d05ddb2f429277f5348/68747470733a2f2f616e616c7974696373696e6469616d61672e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f31322f646576656c6f7065722d6472696262626c652e676966"
-      width="600"
-      height="auto"
-      loading="lazy"
-      class="mx-auto my-10"
-    />
     <div
       id="image-carousel"
-      class="splide mx-auto my-20 md:shadow-lg md:rounded animate-fadein"
+      class="splide mx-auto my-20 animate-fadein xl:w-fit xl:px-20"
       aria-label="Projects image slider"
     >
       <div class="splide__arrows">
@@ -31,33 +24,42 @@ import Anchor from './Anchor.astro'
 
       <div class="splide__track">
         <ul class="splide__list">
-          <li class="splide__slide">
-            <img
-              src="/projects/univirtual.webp"
-              alt="univirtual branding website"
-              loading="lazy"
-            />
+          <li class="splide__slide badge univirtual">
+            <a href="https://www.univirtual.ch" target="_blank">
+              <img
+                src="https://www.univirtual.ch/fr/images/univirtual_logo.webp"
+                alt="univirtual branding website"
+                loading="lazy"
+              />
+            </a>
           </li>
-          <li class="splide__slide">
-            <img
-              src="/projects/iws-logiciel.webp"
-              alt="iws logiciel branding website"
-              loading="lazy"
-            />
+          <li class="splide__slide badge univirtual">
+            <a href="https://www.i-w-s-logiciel.com" target="_blank">
+              <img
+                src="https://www.i-w-s-logiciel.com/_next/image?url=%2Fimages%2Fiws_logo.webp&w=1920&q=90"
+                alt="iws logiciel branding website"
+                class="p-10"
+                loading="lazy"
+              />
+            </a>
           </li>
-          <li class="splide__slide">
-            <img
-              src="/projects/decalog.webp"
-              alt="decalog branding website"
-              loading="lazy"
-            />
+          <li class="splide__slide badge decalog">
+            <a href="https://www.decalog.net" target="_blank">
+              <img
+                src="https://www.decalog.net/img/logo-decalog2.png"
+                alt="decalog branding website"
+                loading="lazy"
+              />
+            </a>
           </li>
-          <li class="splide__slide">
-            <img
-              src="/projects/lavandesetcompagnie.webp"
-              alt="lavandesandcie branding website"
-              loading="lazy"
-            />
+          <li class="splide__slide badge lc">
+            <a href="https://www.lavandesetcompagnie.com" target="_blank">
+              <img
+                src="https://www.lavandesetcompagnie.com/img/logo-1637695046.jpg"
+                alt="lavandesandcie branding website"
+                loading="lazy"
+              />
+            </a>
           </li>
         </ul>
       </div>
@@ -66,7 +68,9 @@ import Anchor from './Anchor.astro'
       id="contact-me-for-next-project"
       class="translate-x-full duration-1000 ease-out"
     >
-      <p class="text-xl text-slate-700 font-semibold text-center">
+      <p
+        class="text-xl text-slate-700 dark:text-slate-50 font-semibold text-center"
+      >
         I'm looking forward to study your needs and ideas as my next project...
       </p>
       <Anchor
@@ -87,8 +91,11 @@ import Anchor from './Anchor.astro'
   import { useObserver } from '../hooks/useObserver'
 
   new Splide('#image-carousel', {
-    width: 800,
-    heightRatio: 0.6,
+    fixedWidth: 300,
+    fixedHeight: 200,
+    gap: 50,
+    rewind: true,
+    pagination: false,
   }).mount()
 
   useObserver<HTMLAnchorElement>('#carousel-section', () => {
@@ -103,7 +110,27 @@ import Anchor from './Anchor.astro'
 </script>
 
 <style>
+  .splide__slide {
+    @apply overflow-hidden bg-white p-2 my-4 rounded shadow relative hover:shadow-lg;
+  }
+
+  .badge {
+    @apply after:absolute after:w-32 after:h-fit after:bottom-4 after:-right-8 after:z-10 after:block after:text-white after:uppercase after:text-center after:text-xs after:-rotate-45 after:text-center after:p-1;
+  }
+
+  .decalog {
+    @apply after:bg-red-700 after:content-["2014-2020"];
+  }
+
+  .lc {
+    @apply after:bg-orange-700 after:content-["2015-2021"];
+  }
+
+  .univirtual {
+    @apply after:bg-green-700 after:content-["2021-now"];
+  }
+
   .splide__slide img {
-    @apply w-full h-full object-cover md:rounded opacity-90;
+    @apply w-full h-full object-contain;
   }
 </style>
