@@ -8,7 +8,7 @@ import {
   TablerIcon,
 } from '@tabler/icons'
 
-type InputType = 'text' | 'number' | 'date' | 'email' | 'phone'
+type InputType = 'text' | 'number' | 'date' | 'email'
 export interface Props {
   type: InputType
   name: string
@@ -30,7 +30,7 @@ const icons: Icons = {
   number: IconNumber,
   email: IconAt,
   date: IconCalendar,
-  phone: IconPhone,
+  text: IconPhone,
 }
 
 const Icon = icons[attributes.type]
