@@ -1,13 +1,5 @@
 import * as nodemailer from 'nodemailer'
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: import.meta.env.SMTP_USER,
-    pass: import.meta.env.SMTP_PASSWORD,
-  },
-})
-
 export const Mailer = {
   sendContactEmail: async ({
     fullname,
@@ -15,6 +7,15 @@ export const Mailer = {
     email,
     message,
   }: ContactData) => {
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      auth: {
+        user: import.meta.env.SMTP_USER,
+        pass: import.meta.env.SMTP_PASSWORD,
+      },
+    })
+
     return await transporter.sendMail({
       from: import.meta.env.CONTACT_SMTP_SENDER,
       to: import.meta.env.CONTACT_SMTP_RECIPIENT,
