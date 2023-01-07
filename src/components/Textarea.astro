@@ -1,7 +1,5 @@
 ---
-import icons from '@tabler/icons'
-
-const { IconMessage } = icons
+import Icon from './Icon.astro'
 
 export interface Props {
   name: string
@@ -18,7 +16,7 @@ const { placeholder, value, name, required = false } = Astro.props as Props
 <label class="relative block w-full">
   <span class="sr-only">{placeholder}</span>
   <span class="absolute inset-y-0 left-0 flex top-3 pl-2">
-    <IconMessage stroke={1} width={16} height={16} />
+    <Icon name="columns" width={16} height={16} />
   </span>
   <textarea
     name={name}

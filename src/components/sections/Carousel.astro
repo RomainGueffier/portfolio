@@ -1,8 +1,6 @@
 ---
-import icons from '@tabler/icons'
-import Anchor from './Anchor.astro'
-
-const { IconCaretRight } = icons
+import Anchor from '../Anchor.astro'
+import Icon from '../Icon.astro'
 ---
 
 <section id="carousel-section" class="py-20 bg-slate-50 dark:bg-slate-600">
@@ -17,10 +15,10 @@ const { IconCaretRight } = icons
     >
       <div class="splide__arrows">
         <button class="splide__arrow splide__arrow--prev">
-          <IconCaretRight />
+          <Icon name="caret-right" />
         </button>
         <button class="splide__arrow splide__arrow--next">
-          <IconCaretRight />
+          <Icon name="caret-right" />
         </button>
       </div>
 
@@ -90,7 +88,7 @@ const { IconCaretRight } = icons
 <script>
   import '@splidejs/splide/css'
   import Splide from '@splidejs/splide'
-  import { useObserver } from '../hooks/useObserver'
+  import { useObserver } from '../../hooks/useObserver'
 
   new Splide('#image-carousel', {
     fixedWidth: 300,

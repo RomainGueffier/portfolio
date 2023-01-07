@@ -1,7 +1,6 @@
 ---
-import icons from '@tabler/icons'
+import Icon from '../Icon.astro'
 
-const { IconBlockquote, IconTools } = icons
 const toolbox = [
   {
     name: 'Git',
@@ -233,7 +232,7 @@ const toolbox = [
   <h2
     class="text-4xl mt-0 mb-10 font-semibold text-slate-900 dark:text-slate-50 flex gap-2 items-center justify-end"
   >
-    My Toolbox <IconTools width={64} height={64} stroke={1} />
+    My Toolbox <Icon name="tool" width={64} height={64} />
   </h2>
   <figure
     class="max-w-[300pt] text-right ml-auto bg-slate-200 dark:bg-slate-800 p-4 shadow rounded hover:shadow-lg transition ease-in-out delay-200"
@@ -242,11 +241,11 @@ const toolbox = [
       cite="https://www.jw.org/en/library/bible/study-bible/books/ecclesiastes/10/#v21010010"
     >
       <p class="text-slate-600 leading-relaxed">
-        <IconBlockquote
+        <Icon
+          name="blockquote"
           className="float-left mb-1 mr-1"
           width={48}
           height={48}
-          stroke={1}
         />
         If an iron tool is dull and one does not sharpen its edge, he will need to
         exert much effort. But wisdom helps to achieve success.

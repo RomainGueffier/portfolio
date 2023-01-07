@@ -1,16 +1,6 @@
 ---
-import icons from '@tabler/icons'
 import Anchor from '../Anchor.astro'
-
-const {
-  Icon3dCubeSphere,
-  IconBrandGitlab,
-  IconBrowserPlus,
-  IconCode,
-  IconGitPullRequest,
-  IconPrompt,
-  IconSeo,
-} = icons
+import Icon from '../Icon.astro'
 ---
 
 <section
@@ -25,8 +15,8 @@ const {
     </h1>
     <p class="md:text-xl font-light text-slate-600 dark:text-slate-400 py-2">
       I’m specializing in building great digital products. Currently, I’m
-      focused on creating SAAS web applications, branding websites with spotless
-      SEO and devops tools to improve companies results!
+      creating SAAS applications, branding websites with spotless SEO and devops
+      tools to level-up your company!
     </p>
     <div class="py-4 flex gap-4 items-center">
       <Anchor
@@ -42,53 +32,53 @@ const {
     </div>
   </div>
   <div>
-    <Icon3dCubeSphere
+    <Icon
+      name="3d-cube-sphere"
       id="icon-cube"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
-    <IconGitPullRequest
+    <Icon
+      name="git-pull-request"
       id="icon-git"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
-    <IconPrompt
+    <Icon
       id="icon-prompt"
+      name="prompt"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
-    <IconBrandGitlab
+    <Icon
       id="icon-devops"
+      name="brand-gitlab"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
-    <IconCode
+    <Icon
       id="icon-code"
+      name="code"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
-    <IconBrowserPlus
+    <Icon
+      name="app-window"
       id="icon-browser"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
-    <IconSeo
+    <Icon
+      name="list-search"
       id="icon-seo"
       width="256"
       height="256"
-      stroke={1}
       style={{ display: 'none' }}
     />
   </div>
@@ -97,12 +87,12 @@ const {
   function getRandomJob() {
     const jobs = [
       { label: 'a Full-Stack Developer', icon: 'prompt' },
-      { label: 'a Web Developer', icon: 'code' },
+      { label: 'a Experienced Programmer', icon: 'code' },
       { label: 'an Application Architect', icon: 'cube' },
-      { label: 'a Devops Geek', icon: 'devops' },
+      { label: 'a Devops Designer', icon: 'devops' },
       { label: 'a Programming Teacher', icon: 'git' },
       { label: 'a Webmaster', icon: 'browser' },
-      { label: 'a SEO consultant', icon: 'seo' },
+      { label: 'a SEO Expert', icon: 'seo' },
     ]
     const randomIndex = Math.floor(Math.random() * jobs.length)
     return jobs.at(randomIndex)

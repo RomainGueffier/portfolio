@@ -1,16 +1,14 @@
 ---
-import icons from '@tabler/icons'
-import Button from '../Button.astro'
+import Button from '../../Button.astro'
+import Icon from '../../Icon.astro'
 
 import './styles.css'
-
-const { IconClock, IconMoon, IconSun } = icons
 ---
 
 <Button data-theme="auto" id="dark-mode-btn" ariaLabel="Toggle color mode">
-  <div class="auto"><IconClock /></div>
-  <div class="light"><IconMoon /></div>
-  <div class="dark"><IconSun /></div>
+  <div class="auto"><Icon name="clock" width={32} height={32} /></div>
+  <div class="light"><Icon name="moon" width={32} height={32} /></div>
+  <div class="dark"><Icon name="sun" width={32} height={32} /></div>
 </Button>
 <script is:inline>
   const darkModeBtn = document.querySelector('#dark-mode-btn')

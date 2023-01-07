@@ -1,9 +1,6 @@
 ---
-import icons from '@tabler/icons'
-import Button from './Button.astro'
+import Icon from '../Icon.astro'
 import ThemeToggle from './navbar/ThemeToggle.astro'
-
-const { IconHome, IconInfoSquare, IconMail, IconMoon, IconSun } = icons
 ---
 
 <nav
@@ -13,9 +10,17 @@ const { IconHome, IconInfoSquare, IconMail, IconMoon, IconSun } = icons
     <img src="/logo.webp" alt="logo" class="w-10 h-10 rounded" />
   </div>
   <ul class="menu">
-    <li><a href="/"><IconHome /> Home</a></li>
-    <li><a href="#about"><IconInfoSquare /> About</a></li>
-    <li><a href="#contact"><IconMail /> Contact</a></li>
+    <li>
+      <a href="/"><Icon name="home" width="32" height="32" /> Home</a>
+    </li>
+    <li>
+      <a href="#about"
+        ><Icon name="info-square" width="32" height="32" /> About</a
+      >
+    </li>
+    <li>
+      <a href="#contact"><Icon name="mail" width="32" height="32" /> Contact</a>
+    </li>
   </ul>
   <div class="flex-1 justify-end text-right">
     <ThemeToggle />
