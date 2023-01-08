@@ -2,7 +2,7 @@
   "compilerOptions": {
     // Enable top-level await, and other modern ESM features.
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "CommonJS",
     // Enable node-style module resolution, for things like npm package imports.
     "moduleResolution": "node",
     // Enable JSON imports.
@@ -18,7 +18,10 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
-      "@/layouts/*": ["src/layouts/*"]
+      "@/layouts/*": ["src/layouts/*"],
+      "@/libs/*": ["src/libs/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src", "api"]
 }

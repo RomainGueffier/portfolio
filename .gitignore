@@ -28,3 +28,4 @@ pnpm-debug.log*
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
+.vercel
