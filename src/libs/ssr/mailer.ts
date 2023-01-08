@@ -1,56 +1,34 @@
-import * as SibApiV3Sdk from '@sendinblue/client'
+import * as nodemailer from 'nodemailer'
 
-export default async function sendContactEmail({
-  fullname,
-  phone,
-  email,
-  message,
-}: ContactData) {
-  const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi()
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
+  },
+})
 
-  apiInstance.setApiKey(
-    SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey,
-    process.env.SB_API_KEY!
-  )
-
-  return await apiInstance
-    .sendTransacEmail({
+export const Mailer = {
+  sendContactEmail: async ({
+    fullname,
+    phone,
+    email,
+    message,
+  }: ContactData) => {
+    return await transporter.sendMail({
+      from: process.env.CONTACT_SMTP_SENDER,
+      to: process.env.CONTACT_SMTP_RECIPIENT,
       subject: 'Contact from your portfolio website',
-      textContent: `You received a email from your portfolio website:\nName: ${fullname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
-      htmlContent: `<!DOCTYPE html><html><body><p>
-          You received a email from your portfolio website:<br><br>
-          <b>Name:</b> ${fullname}<br>
-          <b>Email:</b> ${email}<br>
-          <b>Phone:</b> ${phone}<br>
-          <b>Message:</b> ${message}
-        </p></html></body>`,
-      sender: {
-        name: 'Portfolio Bot',
-        email: process.env.CONTACT_SMTP_SENDER,
-      },
-      messageVersions: [
-        {
-          to: [{ email: process.env.CONTACT_SMTP_RECIPIENT!, name: 'Contact' }],
-          replyTo: {
-            name: 'Portfolio Bot',
-            email: process.env.CONTACT_SMTP_SENDER!,
-          },
-        },
-      ],
+      text: `You received a email from your portfolio website:\nName: ${fullname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+      html: `<p>
+              You received a email from your portfolio website:<br><br>
+              <b>Name:</b> ${fullname}<br>
+              <b>Email:</b> ${email}<br>
+              <b>Phone:</b> ${phone}<br>
+              <b>Message:</b> ${message}
+            </p>`,
     })
-    .then(
-      (data) => {
-        return { error: false, message: 'sent' }
-      },
-      (error) => {
-        console.error(error)
-        return { error: true, message: 'not sent' }
-      }
-    )
-    .catch((error) => {
-      console.error(error)
-      return { error: true, message: 'not sent' }
-    })
+  },
 }
 
 type ContactData = {

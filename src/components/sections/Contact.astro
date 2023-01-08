@@ -8,7 +8,11 @@ import Textarea from '../Textarea.astro'
 <section id="contact" class="py-20 bg-slate-100 dark:bg-slate-800">
   <div class="px-5 md:w-3/4 lg:w-1/3 mx-auto text-center">
     <h2 class="text-4xl">Contact</h2>
-    <form id="contact-form" class="py-10 flex gap-5 flex-col items-center">
+    <form
+      id="contact-form"
+      data-origin={origin}
+      class="py-10 flex gap-5 flex-col items-center"
+    >
       <Input
         type="text"
         placeholder="Fullname"
@@ -47,7 +51,7 @@ import Textarea from '../Textarea.astro'
 </section>
 
 <script>
-  const contactFormEl = document.querySelector('#contact-form')
+  const contactFormEl = document.querySelector<HTMLFormElement>('#contact-form')
   if (contactFormEl) {
     contactFormEl.addEventListener('submit', async (event) => {
       event.preventDefault()
@@ -56,7 +60,7 @@ import Textarea from '../Textarea.astro'
       let data = new FormData(form)
       const plainFormData = Object.fromEntries(data.entries())
 
-      const response = await fetch('http://localhost:3000/api/email', {
+      const response = await fetch('/api/email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
