@@ -65,8 +65,7 @@ import Textarea from '../Textarea.astro'
         body: JSON.stringify(plainFormData),
       })
 
-      const result = await response.json()
-      console.log(result)
+      await response.json()
       form.reset()
 
       return false
