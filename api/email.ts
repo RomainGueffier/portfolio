@@ -6,6 +6,5 @@ export default async function handler(
   response: VercelResponse
 ) {
   const data = await request.body
-  const sent = await sendContactEmail(data)
-  response.status(200).send(JSON.stringify(sent))
+  response.status(200).json(await sendContactEmail(data))
 }

@@ -1,4 +1,4 @@
-import * as nodemailer from 'nodemailer'
+import * as SibApiV3Sdk from '@sendinblue/client'
 
 export default async function sendContactEmail({
   fullname,
@@ -6,28 +6,51 @@ export default async function sendContactEmail({
   email,
   message,
 }: ContactData) {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
-    },
-  })
+  const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi()
 
-  return await transporter.sendMail({
-    from: process.env.CONTACT_SMTP_SENDER,
-    to: process.env.CONTACT_SMTP_RECIPIENT,
-    subject: 'Contact from your portfolio website',
-    text: `You received a email from your portfolio website:\nName: ${fullname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
-    html: `<p>
-              You received a email from your portfolio website:<br><br>
-              <b>Name:</b> ${fullname}<br>
-              <b>Email:</b> ${email}<br>
-              <b>Phone:</b> ${phone}<br>
-              <b>Message:</b> ${message}
-            </p>`,
-  })
+  apiInstance.setApiKey(
+    SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey,
+    process.env.SB_API_KEY!
+  )
+
+  return await apiInstance
+    .sendTransacEmail({
+      subject: 'Contact from your portfolio website',
+      textContent: `You received a email from your portfolio website:\nName: ${fullname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+      htmlContent: `<!DOCTYPE html><html><body><p>
+          You received a email from your portfolio website:<br><br>
+          <b>Name:</b> ${fullname}<br>
+          <b>Email:</b> ${email}<br>
+          <b>Phone:</b> ${phone}<br>
+          <b>Message:</b> ${message}
+        </p></html></body>`,
+      sender: {
+        name: 'Portfolio Bot',
+        email: process.env.CONTACT_SMTP_SENDER,
+      },
+      messageVersions: [
+        {
+          to: [{ email: process.env.CONTACT_SMTP_RECIPIENT!, name: 'Contact' }],
+          replyTo: {
+            name: 'Portfolio Bot',
+            email: process.env.CONTACT_SMTP_SENDER!,
+          },
+        },
+      ],
+    })
+    .then(
+      (data) => {
+        return { error: false, message: 'sent' }
+      },
+      (error) => {
+        console.error(error)
+        return { error: true, message: 'not sent' }
+      }
+    )
+    .catch((error) => {
+      console.error(error)
+      return { error: true, message: 'not sent' }
+    })
 }
 
 type ContactData = {
