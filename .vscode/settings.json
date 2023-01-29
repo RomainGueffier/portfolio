@@ -12,5 +12,9 @@
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
     "astro": "html"
+  },
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

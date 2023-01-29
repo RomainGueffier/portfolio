@@ -4,10 +4,10 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
 ---
 
 <nav
-  class="py-5 container mx-auto flex items-center gap-5 flex-col md:flex-row"
+  class="container mx-auto flex flex-col items-center gap-5 py-5 md:flex-row"
 >
-  <div class="flex-1 flex items-center">
-    <img src="/logo.webp" alt="logo" class="w-10 h-10 rounded" />
+  <div class="flex flex-1 items-center">
+    <img src="/logo.webp" alt="logo" class="h-10 w-10 rounded" />
   </div>
   <ul class="menu">
     <li>
@@ -21,6 +21,9 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
     <li>
       <a href="#contact"><Icon name="mail" width="32" height="32" /> Contact</a>
     </li>
+    <li>
+      <a href="/blog"><Icon name="news" width="32" height="32" /> Blog</a>
+    </li>
   </ul>
   <div
     class="fixed top-5 right-2 md:static md:flex-1 md:justify-end md:text-right"
@@ -30,10 +33,10 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
 </nav>
 <style>
   .menu {
-    @apply flex-1 flex gap-5 justify-center items-center;
+    @apply flex flex-1 items-center justify-center gap-5;
   }
 
   .menu > li > a {
-    @apply flex gap-1 items-center;
+    @apply flex items-center gap-1;
   }
 </style>

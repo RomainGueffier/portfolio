@@ -18,16 +18,16 @@ const socialApps = [
 ]
 ---
 
-<section class="w-full p-10 bg-slate-700 text-center">
+<section class="w-full bg-slate-700 p-10 text-center">
   <h2 class="p-4 text-xl font-semibold">Follow me!</h2>
-  <ul class="mx-auto flex items-center justify-center flex-wrap gap-2">
+  <ul class="mx-auto flex flex-wrap items-center justify-center gap-2">
     {
       socialApps.map((app) => {
         return (
           <li class="p-2">
             <a
               href={app.href}
-              class="flex flex-col gap-2 items-center justify-center hover:scale-110 transition delay-200 ease-in"
+              class="flex flex-col items-center justify-center gap-2 transition delay-200 ease-in hover:scale-110"
               target="_blank"
             >
               <img

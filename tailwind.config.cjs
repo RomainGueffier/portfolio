@@ -1,11 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
   mode: 'jit',
   darkMode: 'class',
   theme: {
     extend: {
+      typography: {
+        quoteless: {
+          css: {
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:first-of-type::after': { content: 'none' },
+          },
+        },
+      },
       keyframes: {
         fadein: {
           '0%': { opacity: 0 },
