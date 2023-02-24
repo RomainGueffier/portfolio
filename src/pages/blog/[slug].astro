@@ -33,8 +33,10 @@ const { Content } = await post.render()
       post.data?.image && (
         <img
           src={post.data.image}
+          alt={post.data?.alt || post.data.title}
+          title={post.data?.alt || post.data.title}
           loading="lazy"
-          class="h-auto w-full object-cover object-center"
+          class="mx-auto h-auto max-w-lg object-cover object-center"
         />
       )
     }

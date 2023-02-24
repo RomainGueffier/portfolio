@@ -1,7 +1,8 @@
 ---
 title: A Tsoa & Swagger integration with ExpressJS
-image: https://picsum.photos/1000/400
-publishedAt: 2023-01-29T19:38:00Z
+image: /express-laptop.jpg
+alt: Photo de Clément Hélardot sur Unsplash
+publishedAt: 2023-02-24T19:00:00Z
 description: Would you like to generate your OpenAPI schema from your code without writing long json or yaml declarations files?
 tags:
   - tsoa
@@ -17,7 +18,7 @@ tags:
 
 Would you like to generate your `Swagger UI` and `OpenAPI` specs right from the code without rewriting your schema in a long `yaml` or `json` declaration file?
 
-You can with the power of `Typescript` and `Tsoa`. While still _experimental_ at the start of 2023 (not for too long), `Tsoa` will take leverage of `decorators` to make the hard work for you.
+You can with the power of `Typescript` and `Tsoa`. While relying on the _experimental_ **Typescript Decorators** feature (at the start of 2023), `Tsoa` is more than ready to use.
 
 Even greater, the syntax is short and easy to read! 😃
 
@@ -29,73 +30,108 @@ Init a `Express` + `Typescript` project:
 
 ```bash
 pnpm init
-pnpm add express
-pnpm add -D typescript @types/express @types/node nodemon ts-node tsoa swagger-ui-express
+pnpm add express swagger-ui-express tsoa
+pnpm add -D typescript @types/express @types/node nodemon ts-node  @types/swagger-ui-express
 ```
 
 You should have a `package.json` file looking like this:
 
 ```json
 {
-  "name": "express-ts-tsoa",
+  "name": "tsoa-express",
+  "version": "1.0.0",
+  "description": "tsoa express example",
   "type": "module",
-  "main": "index.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec \"ts-node index.ts\"",
-    "build": "tsc"
-  },
-  "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/express": "^6.4.6",
-    "tsoa": "^8.32.0",
-    "ts-node": "^8.32.0",
-    "nodemon": "^8.32.0",
-    "swagger-ui-express": "^0.8.0",
-    "typescript": "^4.9.4"
+    "dev": "tsoa spec-and-routes && nodemon --watch src --ext ts --exec \"ts-node --esm src/server.ts\"",
+    "build": "tsoa spec-and-routes && tsc src/server.ts",
+    "start": "node dist/src/server.js"
   },
   "dependencies": {
-    "express": "^0.7.12"
+    "@tsoa/runtime": "^5.0.0",
+    "express": "^4.18.2",
+    "swagger-ui-express": "^4.6.0",
+    "tsoa": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/swagger-ui-express": "^4.1.3",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.11.19",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
   }
 }
 ```
 
 > ℹ️ Note that I use `ESModules` and `node 18` for this example
 
-Create a `.tsconfig.json`:
+Create a `tsconfig.json`:
 
 ```json
 {
   "compilerOptions": {
     "target": "ESNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "experimentalDecorators": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true, // Needed for Tsoa
+    "emitDecoratorMetadata": true, // Needed for Tsoa
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "baseUrl": "."
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["src", "index.ts"]
+  "exclude": ["node_modules"],
+  "include": ["src", ".tsoa"]
 }
 ```
 
 ## Code boilerplate
 
-Create a `src` folder and a `index.ts` file in root directory.
+Create a `src` folder and a `app.ts` and `server.ts` files in root directory.
 
-Initialize a basic `Express` app:
+Initialize your `Express` app with `Swagger` and `Tsoa`:
 
 ```ts
-// index.ts
-import express, { type Request, type Response } from 'express'
+// app.ts
+import express, { json, urlencoded } from 'express'
+// Generated routes & Swagger definitions by Tsoa CLI
+import { RegisterRoutes } from '../.tsoa/routes.js'
+import swaggerUI from 'swagger-ui-express'
+import swaggerJson from '../.tsoa/swagger.json' assert { type: 'json' }
 
-const app = express()
-const port = 8000
+export const app = express()
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript + Tsoa Server')
+// Use body parser to read sent json payloads
+app.use(
+  urlencoded({
+    extended: true,
+  })
+)
+app.use(json())
+
+RegisterRoutes(app)
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
+
+app.get('/', (_, res) => {
+  res.json('Welcome to your Tsoa-Express-Swagger app')
 })
+```
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`)
-})
+```ts
+// server.ts
+import { app } from './app.js'
+
+const port = process.env.PORT || 3000
+
+app.listen(port, () =>
+  console.log(`Example app listening at http://localhost:${port}`)
+)
 ```
 
 Then create a `.tsoa.json` file in root directory and paste this code inside:
@@ -103,8 +139,17 @@ Then create a `.tsoa.json` file in root directory and paste this code inside:
 ```json
 // .tsoa.json
 {
-  "controllersGlobPattern": ["./src/controller/*Controller.ts"],
-  "routes": {}
+  "entryFile": "src/server.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["src/controllers/*Controller.ts"],
+  "spec": {
+    "outputDirectory": ".tsoa",
+    "specVersion": 3
+  },
+  "routes": {
+    "routesDir": ".tsoa",
+    "esm": true
+  }
 }
 ```
 
@@ -143,10 +188,17 @@ export class PostsController extends Controller {
 }
 ```
 
-After you server restart, you should see your `/docs` entrypoint showing a new route called `Posts` with a `GET` method and types definitions from your function return type! Pretty easy right? 😎
+After you server restart, you should see your `/docs` entrypoint showing a new route called `Posts` with a `GET` method and types definitions infered from your function return type! Pretty easy right? 😎
 
-Now let's continue by adding a real database and ORM!
+Now you can add the database / ORM you want. Check [Sources](#sources) for more examples!
+
+Thanks for reading !
 
 ## Sources
+
+- [CodeSandbox](https://codesandbox.io/p/github/RomainGueffier/tsoa-express-example/main)
+- [Github](https://github.com/RomainGueffier/tsoa-express-example)
+
+## Docs
 
 - [Tsoa Documentation](https://tsoa-community.github.io/docs/)
