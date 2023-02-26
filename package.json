@@ -3,6 +3,8 @@
   "description": "Portfolio website for RomainGueffier company using Astro.js",
   "author": "RomainGueffier <r.gueffier.pro@gmail.com>",
   "version": "1.0.0",
+  "licence": "private",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -14,27 +16,29 @@
     "format": "prettier ./src"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^2.1.1",
-    "@astrojs/vercel": "^2.4.0",
+    "@astrojs/tailwind": "^3.0.0",
+    "@astrojs/vercel": "^3.0.0",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.11.18",
     "@types/nodemailer": "^6.4.6",
     "@types/request": "^2.48.8",
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
-    "@typescript-eslint/parser": "^5.40.1",
-    "@vercel/node": "^2.8.4",
-    "astro": "^1.5.2",
-    "eslint": "^8.26.0",
-    "eslint-plugin-astro": "^0.21.1",
-    "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vercel/node": "^2.8.16",
+    "astro": "^2.0.2",
+    "eslint": "^8.32.0",
+    "eslint-plugin-astro": "^0.23.0",
+    "prettier": "^2.8.3",
+    "prettier-plugin-astro": "^0.8.0",
+    "prettier-plugin-tailwindcss": "^0.2.2",
     "typescript": "^4.9.4",
-    "vercel": "^28.10.3"
+    "vercel": "^28.14.0"
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.3",
     "astro-icon": "^0.8.0",
-    "nodemailer": "^6.8.0",
+    "nodemailer": "^6.9.1",
     "tailwindcss": "^3.2.1"
   }
 }

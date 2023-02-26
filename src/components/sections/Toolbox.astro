@@ -227,20 +227,20 @@ const toolbox = [
 
 <section
   id="toolbox"
-  class="bg-slate-100 dark:bg-slate-900 py-20 md:py-36 px-5 md:px-20"
+  class="bg-slate-100 py-20 px-5 dark:bg-slate-900 md:py-36 md:px-20"
 >
   <h2
-    class="text-4xl mt-0 mb-10 font-semibold text-slate-900 dark:text-slate-50 flex gap-2 items-center justify-end"
+    class="mt-0 mb-10 flex items-center justify-end gap-2 text-4xl font-semibold text-slate-900 dark:text-slate-50"
   >
     My Toolbox <Icon name="tool" width={64} height={64} />
   </h2>
   <figure
-    class="max-w-[300pt] text-right ml-auto bg-slate-200 dark:bg-slate-800 p-4 shadow rounded hover:shadow-lg transition ease-in-out delay-200"
+    class="ml-auto max-w-[300pt] rounded bg-slate-200 p-4 text-right shadow transition delay-200 ease-in-out hover:shadow-lg dark:bg-slate-800"
   >
     <blockquote
       cite="https://www.jw.org/en/library/bible/study-bible/books/ecclesiastes/10/#v21010010"
     >
-      <p class="text-slate-600 leading-relaxed">
+      <p class="leading-relaxed text-slate-600">
         <Icon
           name="blockquote"
           className="float-left mb-1 mr-1"
@@ -251,12 +251,12 @@ const toolbox = [
         exert much effort. But wisdom helps to achieve success.
       </p>
     </blockquote>
-    <figcaption class="text-sm mt-2 text-slate-500">
+    <figcaption class="mt-2 text-sm text-slate-500">
       — Ecclesiastes 10:10, <cite>New World Translation</cite>
     </figcaption>
   </figure>
   <article
-    class="mx-auto p-5 md:p-10 my-10 dark:bg-slate-800 rounded toolbox-grid max-w-[500pt]"
+    class="toolbox-grid mx-auto my-10 max-w-[500pt] rounded p-5 dark:bg-slate-800 md:p-10"
   >
     {
       toolbox.map((tool) => {
@@ -270,7 +270,7 @@ const toolbox = [
             height={128}
             title={tool.name}
             class={
-              'hover:animate-pulse hover:scale-125 cursor-pointer transition ease-in-out w-full h-full ' +
+              'h-full w-full cursor-pointer transition ease-in-out hover:scale-125 hover:animate-pulse ' +
               className
             }
             style={{

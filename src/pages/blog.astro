@@ -1,0 +1,85 @@
+---
+import Icon from '@/components/Icon.astro'
+import Footer from '@/components/sections/Footer.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+export const prerender = true
+
+const blogPosts = await getCollection('blog')
+---
+
+<Layout title="Homepage">
+  <section
+    class="bg-slate-50 p-5 text-slate-900 dark:bg-slate-900 dark:text-slate-50 lg:p-10"
+  >
+    <h1 class="my-8 text-center text-5xl font-bold">Blog page</h1>
+    <p class="mx-auto max-w-md text-lg text-slate-800 dark:text-slate-100">
+      Welcome to my blog!
+    </p>
+    <p class="my-5 mx-auto max-w-md text-lg text-slate-800 dark:text-slate-100">
+      Here I post tricks and tips to help you survive the ever changing world of
+      programming. I focus on edge cases and bugs which I find rarely treated in
+      other platforms.
+    </p>
+    <div class="mx-auto flex flex-wrap justify-center gap-4">
+      {
+        blogPosts.map((post) => {
+          return (
+            <article class="flex w-full flex-col rounded border-4 border-slate-100 bg-slate-100 shadow hover:shadow-2xl dark:border-slate-800 dark:bg-slate-800 md:w-1/2 lg:w-1/3 xl:w-1/4">
+              {post.data?.image && (
+                <img
+                  src={post.data.image}
+                  alt={post.data?.alt || post.data.title}
+                  title={post.data?.alt || post.data.title}
+                  class="mb-1"
+                />
+              )}
+              <div class="p-2">
+                <h2 class="text-2xl font-semibold">{post.data.title}</h2>
+                <time
+                  class="mb-2 text-slate-500"
+                  datetime={post.data.publishedAt.toISOString()}
+                >
+                  {new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(
+                    post.data.publishedAt
+                  )}
+                </time>
+
+                <p class="py-2">{post.data.description}</p>
+                {post.data?.tags && (
+                  <div class="flex flex-wrap gap-1 py-2">
+                    {post.data.tags.map((tag) => {
+                      return (
+                        <a
+                          href="#"
+                          class="bg-orange-300 p-1 text-sm text-slate-900 transition ease-in hover:-translate-y-2"
+                        >
+                          #{tag}
+                        </a>
+                      )
+                    })}
+                  </div>
+                )}
+                <a
+                  class="group mt-auto flex items-center gap-2"
+                  href={`/blog/${post.slug}`}
+                >
+                  <span>Read more</span>
+                  <Icon
+                    name="arrow-narrow-right"
+                    width={32}
+                    height={32}
+                    className="transition ease-in-out group-hover:translate-x-2"
+                  />
+                </a>
+              </div>
+            </article>
+          )
+        })
+      }
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

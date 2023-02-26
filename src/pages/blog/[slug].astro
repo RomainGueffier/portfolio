@@ -1,0 +1,63 @@
+---
+import Footer from '@/components/sections/Footer.astro'
+import Layout from '@/layouts/Layout.astro'
+import Icon from '@/components/Icon.astro'
+import { CollectionEntry, getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog')
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}
+
+export const prerender = true
+
+type Props = {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout title="Homepage">
+  <article
+    class="container prose prose-slate prose-quoteless mx-auto my-10 px-5 backdrop-blur prose-h1:text-center prose-blockquote:border-l-4 prose-blockquote:border-slate-500 prose-code:before:hidden prose-code:after:hidden dark:prose-invert lg:my-20 lg:prose-xl"
+  >
+    <a href="/blog" class="flex items-center gap-2 p-2 text-sm text-slate-500">
+      <Icon name="arrow-narrow-left" width={32} height={32} /> Go back
+    </a>
+    {
+      post.data?.image && (
+        <img
+          src={post.data.image}
+          alt={post.data?.alt || post.data.title}
+          title={post.data?.alt || post.data.title}
+          loading="lazy"
+          class="mx-auto h-auto max-w-lg object-cover object-center"
+        />
+      )
+    }
+    <Icon
+      name="calendar"
+      width={32}
+      height={32}
+      className="mx-auto text-slate-500"
+    />
+    <time
+      class="block w-full text-center text-slate-500"
+      datetime={post.data.publishedAt.toISOString()}
+    >
+      {
+        new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(
+          post.data.publishedAt
+        )
+      }</time
+    >
+    <Content />
+  </article>
+
+  <Footer />
+</Layout>

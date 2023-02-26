@@ -27,7 +27,7 @@ const {
   override,
   href,
   id,
-  target = '_self'
+  target = '_self',
 } = Astro.props as Props
 
 const btnVariants: VariantStyles = {
@@ -46,6 +46,12 @@ const btnColorScheme: ColorSchemeStyles = {
 const classDeclarations = `inline-block ${btnVariants?.[variant]} ${btnColorScheme?.[colorScheme]} ${override}`
 ---
 
-<a id={id} href={href} target={target} class={classDeclarations} aria-label={ariaLabel}>
+<a
+  id={id}
+  href={href}
+  target={target}
+  class={classDeclarations}
+  aria-label={ariaLabel}
+>
   <slot />
 </a>
