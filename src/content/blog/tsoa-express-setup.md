@@ -20,9 +20,11 @@ Would you like to generate your `Swagger UI` and `OpenAPI` specs right from the 
 
 You can with the power of `Typescript` and `Tsoa`. While relying on the _experimental_ **Typescript Decorators** feature (at the start of 2023), `Tsoa` is more than ready to use.
 
-Even greater, the syntax is short and easy to read! 😃
+The big plus of this library is its very short and elegant syntax. It's not just about generating some routes, but also a SwaggerUI endpoint and having parameters and body types safety! All of this infered from your app types. 😃
 
-Let's start right now!
+Let's start right now with a simple example!
+
+> ℹ️ Note that throughout this tutorial, I will use `ESModules`, `pnpm` and `node 18`, but feel free to adapt to your personal cup of tee 🍵
 
 ## Installation
 
@@ -65,9 +67,7 @@ You should have a `package.json` file looking like this:
 }
 ```
 
-> ℹ️ Note that I use `ESModules` and `node 18` for this example
-
-Create a `tsconfig.json`:
+Next create a `tsconfig.json`:
 
 ```json
 {
@@ -114,6 +114,7 @@ app.use(
 )
 app.use(json())
 
+// Load tsoa generated routes into express app
 RegisterRoutes(app)
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
@@ -167,11 +168,14 @@ Create a new controller file and paste this code inside.
 
 ```ts
 // ./src/controllers/PostsController.ts
-import { Controller } from 'tsoa'
+import { Route, Tag, Get, Controller } from 'tsoa'
 
 @Route('posts')
 @Tag('Posts')
 export class PostsController extends Controller {
+  /**
+   * User route description
+   */
   @Get()
   async findMany() {
     return [
@@ -190,7 +194,7 @@ export class PostsController extends Controller {
 
 After you server restart, you should see your `/docs` entrypoint showing a new route called `Posts` with a `GET` method and types definitions infered from your function return type! Pretty easy right? 😎
 
-Now you can add the database / ORM you want. Check [Sources](#sources) for more examples!
+Now you can add the database / ORM that you want. Check [Sources](#sources) for more examples!
 
 Thanks for reading !
 
