@@ -2,7 +2,7 @@
 title: A Tsoa & Swagger integration with ExpressJS
 image: /express-laptop.jpg
 alt: Photo de Clément Hélardot sur Unsplash
-publishedAt: 2023-02-24T19:00:00Z
+publishedAt: 2023-02-26T19:00:00Z
 description: Would you like to generate your OpenAPI schema from your code without writing long json or yaml declarations files?
 tags:
   - tsoa
