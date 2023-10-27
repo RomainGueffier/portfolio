@@ -2,7 +2,7 @@
 import Footer from '@/components/sections/Footer.astro'
 import Layout from '@/layouts/Layout.astro'
 import Icon from '@/components/Icon.astro'
-import { CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog')
