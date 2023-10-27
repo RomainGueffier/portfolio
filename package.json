@@ -16,29 +16,29 @@
     "format": "prettier ./src"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^5.0.1",
+    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/vercel": "^5.1.0",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "^20.8.0",
-    "@types/nodemailer": "^6.4.11",
-    "@types/request": "^2.48.9",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
-    "@vercel/node": "^3.0.6",
-    "astro": "^3.2.0",
-    "eslint": "^8.50.0",
-    "eslint-plugin-astro": "^0.29.0",
+    "@types/node": "^20.8.9",
+    "@types/nodemailer": "^6.4.13",
+    "@types/request": "^2.48.11",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "@vercel/node": "^3.0.7",
+    "astro": "^3.4.0",
+    "eslint": "^8.52.0",
+    "eslint-plugin-astro": "^0.29.1",
     "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0",
-    "prettier-plugin-tailwindcss": "^0.5.4",
+    "prettier-plugin-astro": "^0.12.1",
+    "prettier-plugin-tailwindcss": "^0.5.6",
     "typescript": "^5.2.2",
-    "vercel": "^32.3.1"
+    "vercel": "^32.5.0"
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "astro-icon": "^0.8.1",
-    "nodemailer": "^6.9.5",
-    "tailwindcss": "^3.3.3"
+    "nodemailer": "^6.9.7",
+    "tailwindcss": "^3.3.5"
   }
 }
