@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon as AstroIcon } from 'astro-icon/components'
 export interface Props {
   name: string
   width?: string | number
@@ -12,4 +12,4 @@ export interface Props {
 const { name, className, ...attributes } = Astro.props as Props
 ---
 
-<Icon pack="tabler" name={name} class={className} {...attributes} />
+<AstroIcon name={`tabler:${name}`} class={className} {...attributes} />

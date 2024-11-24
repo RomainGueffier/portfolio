@@ -4,6 +4,7 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
 ---
 
 <nav
+  transition:persist
   class="container mx-auto flex flex-col items-center gap-5 py-5 md:flex-row"
 >
   <div class="flex flex-1 items-center">
@@ -14,12 +15,12 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
       <a href="/"><Icon name="home" width="32" height="32" /> Home</a>
     </li>
     <li>
-      <a href="#about"
+      <a href="/#about"
         ><Icon name="info-square" width="32" height="32" /> About</a
       >
     </li>
     <li>
-      <a href="#contact"><Icon name="mail" width="32" height="32" /> Contact</a>
+      <a href="/#contact"><Icon name="mail" width="32" height="32" /> Contact</a>
     </li>
     <li>
       <a href="/blog"><Icon name="news" width="32" height="32" /> Blog</a>
@@ -28,7 +29,7 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
   <div
     class="fixed top-5 right-2 md:static md:flex-1 md:justify-end md:text-right"
   >
-    <ThemeToggle />
+    <ThemeToggle transition:persist />
   </div>
 </nav>
 <style>

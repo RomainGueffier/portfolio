@@ -4,7 +4,7 @@
   "prettier.trailingComma": "es5",
   "prettier.singleQuote": true,
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "tailwindcss",
   },
   "editor.quickSuggestions": {
     "strings": true
@@ -13,8 +13,16 @@
   "tailwindCSS.includeLanguages": {
     "astro": "html"
   },
+  "editor.formatOnSave": true,
   "prettier.documentSelectors": ["**/*.astro"],
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ]
 }

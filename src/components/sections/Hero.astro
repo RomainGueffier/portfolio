@@ -99,6 +99,7 @@ import Icon from '../Icon.astro'
   }
 
   function typeAnimationWriting(element, text = '', timeout, startOffset = 0) {
+    const timeouts = new Set()
     if (!text) {
       const { icon, label } = getRandomJob()
       text = label
@@ -108,26 +109,39 @@ import Icon from '../Icon.astro'
       document.querySelector(`#icon-${icon}`).style.display = 'block'
     }
     const firstLetter = text.charAt(0)
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       element.innerHTML += firstLetter
       text = text.slice(1)
-      if (text.length > 0) typeAnimationWriting(element, text, timeout)
-      else typeAnimationErase(element, timeout, 5000)
+      if (text.length > 0) {
+        const timeoutIds = typeAnimationWriting(element, text, timeout)
+        timeoutIds.forEach(t => timeouts.add(t))
+      }
+      else {
+        timeouts.add(typeAnimationErase(element, timeout, 5000))
+      }
     }, timeout + startOffset)
+
+    timeouts.add(timeoutId)
+    return timeouts
   }
 
   function typeAnimationErase(element, timeout, startOffset = 0) {
-    setTimeout(() => {
+    return setTimeout(() => {
       element.innerHTML = element.innerHTML.slice(0, -1)
       if (element.innerHTML) typeAnimationErase(element, timeout)
       else typeAnimationWriting(element, '', timeout)
     }, 25 + startOffset)
   }
 
-  const typewriterEl = document.querySelector('.typewriter > span')
-  if (typewriterEl) {
-    typeAnimationWriting(typewriterEl, '', 100, 1000)
+  function typewriter() {
+    const typewriterEl = document.querySelector('.typewriter > span')
+    if (typewriterEl) {
+      const timeoutIds = typeAnimationWriting(typewriterEl, '', 100, 1000)
+      document.addEventListener('astro:before-swap', () => timeoutIds.forEach(t => clearTimeout(t)))
+    }
   }
+
+  typewriter()
 </script>
 <style>
   .typewriter {

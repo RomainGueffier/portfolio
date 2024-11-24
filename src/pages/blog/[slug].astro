@@ -37,6 +37,7 @@ const { Content } = await post.render()
           title={post.data?.alt || post.data.title}
           loading="lazy"
           class="mx-auto h-auto max-w-lg object-cover object-center"
+          transition:name={post.slug}
         />
       )
     }

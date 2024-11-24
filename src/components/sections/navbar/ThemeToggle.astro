@@ -5,31 +5,60 @@ import Icon from '../../Icon.astro'
 import './styles.css'
 ---
 
-<Button data-theme="auto" id="dark-mode-btn" ariaLabel="Toggle color mode">
-  <div class="auto"><Icon name="clock" width={32} height={32} /></div>
-  <div class="light"><Icon name="moon" width={32} height={32} /></div>
+<Button data-theme="auto" id="theme-btn" ariaLabel="Toggle color mode">
   <div class="dark"><Icon name="sun" width={32} height={32} /></div>
+  <div class="light"><Icon name="moon" width={32} height={32} /></div>
+  <div class="auto">
+    <svg xmlns="http://www.w3.org/2000/svg" class="dark:stroke-white stroke-black" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M9.173 14.83a4 4 0 1 1 5.657 -5.657" />
+      <path d="M11.294 12.707l.174 .247a7.5 7.5 0 0 0 8.845 2.492a9 9 0 0 1 -14.671 2.914" />
+      <path d="M3 12h1" />
+      <path d="M12 3v1" />
+      <path d="M5.6 5.6l.7 .7" />
+      <path d="M3 21l18 -18" />
+    </svg>
+</div>
 </Button>
 <script is:inline>
-  const darkModeBtn = document.querySelector('#dark-mode-btn')
-  if (darkModeBtn) {
-    darkModeBtn.addEventListener('click', () => {
-      console.log(darkModeBtn.dataset.theme)
-      switch (darkModeBtn.dataset.theme) {
-        case 'dark':
-          localStorage.theme = 'light'
-          break
-        case 'light':
-          localStorage.removeItem('theme')
-          break
-        default:
-          localStorage.theme = 'dark'
-          break
+  document.addEventListener('astro:page-load', () => {
+    const themeBtn = document.getElementById('theme-btn')
+    if (themeBtn) {
+      function handleThemeToggle() {
+        console.log('change theme to', themeBtn.dataset.theme)
+        localStorage.theme = themeBtn.dataset.theme
+
+        switch (localStorage.theme) {
+          case 'dark':
+            themeBtn.dataset.theme = "light"
+            break
+          case 'light':
+            themeBtn.dataset.theme = "auto"
+            break
+          default:
+            themeBtn.dataset.theme = "dark"
+            break
+        }
       }
-      darkModeBtn.dataset.theme = localStorage?.theme || 'auto'
-      localStorage?.theme === 'dark'
-        ? document.documentElement.classList.add('dark')
-        : document.documentElement.classList.remove('dark')
-    })
-  }
+      handleThemeToggle()
+      themeBtn.addEventListener('click', handleThemeToggle)
+    }
+  })
+</script>
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    let theme = undefined
+    switch (localStorage.theme) {
+      case 'dark':
+        theme = "dark"
+        break
+      case 'light':
+        theme = "light"
+        break
+    }
+
+    if (theme) {
+      document.documentElement.classList.add(theme)
+    }
+  })
 </script>

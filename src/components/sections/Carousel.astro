@@ -93,23 +93,27 @@ import Icon from '../Icon.astro'
   import Splide from '@splidejs/splide'
   import { useObserver } from '../../hooks/useObserver'
 
-  new Splide('#image-carousel', {
-    fixedWidth: 300,
-    fixedHeight: 200,
-    gap: 50,
-    rewind: true,
-    pagination: false,
-  }).mount()
+  function carousel() {
+    new Splide('#image-carousel', {
+      fixedWidth: 300,
+      fixedHeight: 200,
+      gap: 50,
+      rewind: true,
+      pagination: false,
+    }).mount()
 
-  useObserver<HTMLAnchorElement>('#carousel-section', () => {
-    const nextProjectDivEl = document.querySelector<HTMLDivElement>(
-      '#contact-me-for-next-project'
-    )
-    if (!nextProjectDivEl) return
+    useObserver<HTMLAnchorElement>('#carousel-section', () => {
+      const nextProjectDivEl = document.querySelector<HTMLDivElement>(
+        '#contact-me-for-next-project'
+      )
+      if (!nextProjectDivEl) return
 
-    nextProjectDivEl.classList.remove('translate-x-full', 'opacity-0')
-    nextProjectDivEl.classList.add('animate-fadein')
-  })
+      nextProjectDivEl.classList.remove('translate-x-full', 'opacity-0')
+      nextProjectDivEl.classList.add('animate-fadein')
+    })
+  }
+  carousel()
+  document.addEventListener('astro:page-load', carousel)
 </script>
 
 <style>
