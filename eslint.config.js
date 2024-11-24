@@ -1,7 +1,12 @@
+// @ts-check
+import eslint from '@eslint/js'
+import tseslint from 'typescript-eslint'
 import eslintPluginAstro from 'eslint-plugin-astro'
 
 export default [
-  ...eslintPluginAstro.configs.recommended,
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+  eslintPluginAstro.configs.recommended,
   {
     rules: {
       indent: ['error', 2],

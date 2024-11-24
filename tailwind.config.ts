@@ -1,8 +1,9 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss"
+import typographyPlugin from '@tailwindcss/typography'
+
+const config: Config = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  plugins: [require('@tailwindcss/typography')],
-  mode: 'jit',
+  plugins: [typographyPlugin],
   darkMode: 'class',
   theme: {
     extend: {
@@ -16,8 +17,8 @@ module.exports = {
       },
       keyframes: {
         fadein: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
       },
       animation: {
@@ -26,3 +27,5 @@ module.exports = {
     },
   },
 }
+
+export default config

@@ -28,8 +28,8 @@ const toolbox = [
     size: 128,
   },
   {
-    name: 'Visual Studio Code',
-    icon: 'https://cdn.simpleicons.org/visualstudiocode/007ACC',
+    name: 'VSCodium',
+    icon: 'https://cdn.simpleicons.org/vscodium/2F80ED',
     size: 128,
   },
   {
@@ -103,8 +103,8 @@ const toolbox = [
     size: 64,
   },
   {
-    name: 'Symfony',
-    icon: 'https://cdn.simpleicons.org/symfony/000000',
+    name: 'Apple',
+    icon: 'https://cdn.simpleicons.org/apple/000000',
     size: 32,
   },
   {
@@ -133,8 +133,8 @@ const toolbox = [
     size: 32,
   },
   {
-    name: 'Jest',
-    icon: 'https://cdn.simpleicons.org/jest/C21325',
+    name: 'Vitest',
+    icon: 'https://cdn.simpleicons.org/vitest/6E9F18',
     size: 32,
   },
   {
@@ -193,13 +193,13 @@ const toolbox = [
     size: 32,
   },
   {
-    name: 'ChakraUI',
-    icon: 'https://cdn.simpleicons.org/chakraui/319795',
+    name: 'Shadcn/ui',
+    icon: 'https://cdn.simpleicons.org/shadcnui/000000',
     size: 32,
   },
   {
-    name: 'StyledComponent',
-    icon: 'https://cdn.simpleicons.org/styledcomponents/DB7093',
+    name: 'PostgreSQL',
+    icon: 'https://cdn.simpleicons.org/postgresql/4169E1',
     size: 32,
   },
   {
@@ -213,8 +213,8 @@ const toolbox = [
     size: 32,
   },
   {
-    name: 'GraphQL',
-    icon: 'https://cdn.simpleicons.org/graphql/E10098',
+    name: 'PayloadCMS',
+    icon: 'https://cdn.simpleicons.org/payloadcms/000000',
     size: 32,
   },
   {
@@ -227,12 +227,12 @@ const toolbox = [
 
 <section
   id="toolbox"
-  class="bg-slate-100 py-20 px-5 dark:bg-slate-900 md:py-36 md:px-20"
+  class="bg-slate-100 px-5 py-20 dark:bg-slate-900 md:px-20 md:py-36"
 >
   <h2
-    class="mt-0 mb-10 flex items-center justify-end gap-2 text-4xl font-semibold text-slate-900 dark:text-slate-50"
+    class="mb-10 mt-0 flex items-center justify-end gap-2 text-4xl font-semibold text-slate-900 dark:text-slate-50"
   >
-    My Toolbox <Icon name="tool" width={64} height={64} />
+    My Toolbox <Icon name="tool" class="size-16 text-6xl" />
   </h2>
   <figure
     class="ml-auto max-w-[300pt] rounded bg-slate-200 p-4 text-right shadow transition delay-200 ease-in-out hover:shadow-lg dark:bg-slate-800"
@@ -243,15 +243,13 @@ const toolbox = [
       <p class="leading-relaxed text-slate-600">
         <Icon
           name="blockquote"
-          className="float-left mb-1 mr-1"
-          width={48}
-          height={48}
+          class="float-left mb-1 mr-1 size-12 text-5xl text-slate-400"
         />
         If an iron tool is dull and one does not sharpen its edge, he will need to
         exert much effort. But wisdom helps to achieve success.
       </p>
     </blockquote>
-    <figcaption class="mt-2 text-sm text-slate-500">
+    <figcaption class="mt-2 text-sm text-slate-400">
       — Ecclesiastes 10:10, <cite>New World Translation</cite>
     </figcaption>
   </figure>
@@ -260,7 +258,10 @@ const toolbox = [
   >
     {
       toolbox.map((tool) => {
-        const className = tool.name.replaceAll(/ |\./g, '-').toLowerCase()
+        const className = tool.name
+          .replaceAll(/ |\./g, '-')
+          .replaceAll('/', '')
+          .toLowerCase()
         return (
           <img
             src={tool.icon}
@@ -293,14 +294,14 @@ const toolbox = [
       'astro javascript javascript pnpm mariadb php php gitlab gitlab strapi'
       'turborepo javascript javascript css3 html5 php php gitlab gitlab prettier'
       'express express markdown typescript typescript typescript rust node-js node-js apache'
-      'express express eslint typescript typescript typescript jest node-js node-js debian'
-      'symfony tailwindcss tailwindcss typescript typescript typescript bash bash git git'
+      'express express eslint typescript typescript typescript vitest node-js node-js debian'
+      'apple tailwindcss tailwindcss typescript typescript typescript bash bash git git'
       'composer tailwindcss tailwindcss storybook storybook redis bash bash git git'
-      'visual-studio-code visual-studio-code visual-studio-code storybook storybook react react react swagger vite'
-      'visual-studio-code visual-studio-code visual-studio-code nginx nginx react react react github github'
-      'visual-studio-code visual-studio-code visual-studio-code nginx nginx react react react github github'
-      'prisma prisma next-js next-js next-js graphql docker docker docker styledcomponent'
+      'vscodium vscodium vscodium storybook storybook react react react swagger vite'
+      'vscodium vscodium vscodium nginx nginx react react react github github'
+      'vscodium vscodium vscodium nginx nginx react react react github github'
+      'prisma prisma next-js next-js next-js payloadcms docker docker docker postgresql'
       'prisma prisma next-js next-js next-js headlessui docker docker docker reactquery'
-      'chakraui obsidian next-js next-js next-js grafana docker docker docker reacthookform';
+      'shadcnui obsidian next-js next-js next-js grafana docker docker docker reacthookform';
   }
 </style>

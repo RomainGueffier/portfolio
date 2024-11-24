@@ -12,22 +12,24 @@ import ThemeToggle from './navbar/ThemeToggle.astro'
   </div>
   <ul class="menu">
     <li>
-      <a href="/"><Icon name="home" width="32" height="32" /> Home</a>
+      <a href="/"><Icon name="home" class="size-8 text-3xl" /> Home</a>
     </li>
     <li>
       <a href="/#about"
-        ><Icon name="info-square" width="32" height="32" /> About</a
+        ><Icon name="info-square" class="size-8 text-3xl" /> About</a
       >
     </li>
     <li>
-      <a href="/#contact"><Icon name="mail" width="32" height="32" /> Contact</a>
+      <a href="/#contact"
+        ><Icon name="mail" class="size-8 text-3xl" /> Contact</a
+      >
     </li>
     <li>
-      <a href="/blog"><Icon name="news" width="32" height="32" /> Blog</a>
+      <a href="/blog"><Icon name="news" class="size-8 text-3xl" /> Blog</a>
     </li>
   </ul>
   <div
-    class="fixed top-5 right-2 md:static md:flex-1 md:justify-end md:text-right"
+    class="fixed right-2 top-5 md:static md:flex-1 md:justify-end md:text-right"
   >
     <ThemeToggle transition:persist />
   </div>

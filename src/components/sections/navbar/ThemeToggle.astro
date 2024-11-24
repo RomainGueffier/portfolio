@@ -6,19 +6,11 @@ import './styles.css'
 ---
 
 <Button data-theme="auto" id="theme-btn" ariaLabel="Toggle color mode">
-  <div class="dark"><Icon name="sun" width={32} height={32} /></div>
-  <div class="light"><Icon name="moon" width={32} height={32} /></div>
+  <div class="dark"><Icon name="sun" class="size-8 text-3xl" /></div>
+  <div class="light"><Icon name="moon" class="size-8 text-3xl" /></div>
   <div class="auto">
-    <svg xmlns="http://www.w3.org/2000/svg" class="dark:stroke-white stroke-black" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path d="M9.173 14.83a4 4 0 1 1 5.657 -5.657" />
-      <path d="M11.294 12.707l.174 .247a7.5 7.5 0 0 0 8.845 2.492a9 9 0 0 1 -14.671 2.914" />
-      <path d="M3 12h1" />
-      <path d="M12 3v1" />
-      <path d="M5.6 5.6l.7 .7" />
-      <path d="M3 21l18 -18" />
-    </svg>
-</div>
+    <Icon name="sun-moon" class="size-8 text-3xl" />
+  </div>
 </Button>
 <script is:inline>
   document.addEventListener('astro:page-load', () => {
@@ -30,13 +22,13 @@ import './styles.css'
 
         switch (localStorage.theme) {
           case 'dark':
-            themeBtn.dataset.theme = "light"
+            themeBtn.dataset.theme = 'light'
             break
           case 'light':
-            themeBtn.dataset.theme = "auto"
+            themeBtn.dataset.theme = 'auto'
             break
           default:
-            themeBtn.dataset.theme = "dark"
+            themeBtn.dataset.theme = 'dark'
             break
         }
       }
@@ -50,10 +42,10 @@ import './styles.css'
     let theme = undefined
     switch (localStorage.theme) {
       case 'dark':
-        theme = "dark"
+        theme = 'dark'
         break
       case 'light':
-        theme = "light"
+        theme = 'light'
         break
     }
 

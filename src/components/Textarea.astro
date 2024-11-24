@@ -13,14 +13,16 @@ export interface Props {
 const { placeholder, value, name, required = false } = Astro.props as Props
 ---
 
-<label class="relative block w-full">
+<label
+  class="relative block w-full rounded-md border border-slate-300 shadow transition-transform duration-300 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] focus-within:scale-105 focus-within:border-slate-500 focus-within:shadow-lg"
+>
   <span class="sr-only">{placeholder}</span>
   <span class="absolute inset-y-0 left-0 top-3 flex pl-2">
-    <Icon name="columns" width={16} height={16} />
+    <Icon name="columns" />
   </span>
   <textarea
     name={name}
-    class="block w-full rounded-md border border-slate-300 bg-white py-2 pl-9 pr-3 shadow placeholder:italic placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-300 sm:text-sm"
+    class="block w-full rounded-md bg-white py-2 pl-9 pr-3 placeholder:italic placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-300 sm:text-sm"
     placeholder={placeholder}
     value={value}
     required={required}

@@ -1,15 +1,16 @@
 ---
-import { Icon as AstroIcon } from 'astro-icon/components'
-export interface Props {
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+export interface Props extends HTMLAttributes<'i'> {
   name: string
-  width?: string | number
-  height?: string | number
-  id?: string
-  style?: object
-  className?: string
 }
 
-const { name, className, ...attributes } = Astro.props as Props
+const { name, class: className, ...attributes } = Astro.props as Props
 ---
 
-<AstroIcon name={`tabler:${name}`} class={className} {...attributes} />
+<div
+  class={twMerge('inline-block size-4', `ti ti-${name}`, className)}
+  {...attributes}
+>
+</div>
